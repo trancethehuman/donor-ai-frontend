@@ -1,0 +1,20 @@
+.container {
+  overflow: hidden; /* clear float */
+}
+
+.settings,
+.editor {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.settings {
+  float: left;
+  padding: 1em;
+}
+
+.editor {
+  float: right;
+  width: 60%;
+  padding: 1em;
+}
