@@ -23,7 +23,7 @@ const Class = () => {
     };
 
     fetchMessageGeneration();
-  }, [generatedResult]);
+  }, []);
 
   return (
     <div className="container">
