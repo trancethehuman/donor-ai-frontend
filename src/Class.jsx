@@ -1,7 +1,9 @@
 import "./Class.css";
-import React from "react";
+import React, { useState } from "react";
 import { useGeneratedMessage } from "./generationHooks";
 import { Endpoints } from "./consts";
+import { Button } from "@fluentui/react-components";
+import SettingInputField from "./SettingInputField";
 
 const { CLASS: endpoint } = Endpoints;
 
@@ -14,11 +16,17 @@ const requestBody = {
 };
 
 const Class = () => {
+  const [year, setYear] = useState();
+  const [lastDonation, setlLastDonation] = useState();
+  const [askAmount, setAskAmount] = useState();
+  const [news, setNews] = useState();
+  const [deadline, setDeadline] = useState();
+
   const { data, loading, error } = useGeneratedMessage(endpoint, requestBody);
 
   const displayGeneratedMessage = () => {
     if (loading) {
-      return <p>Loading...</p>;
+      return <p>Loading...(this could take a few seconds)</p>;
     }
 
     if (error) {
@@ -28,12 +36,56 @@ const Class = () => {
     return data?.choices[0].text;
   };
 
+  const onClickHandlerGenerateMessage = () => {
+    console.log(`button clicked`);
+  };
+
   return (
     <div className="container">
       <div className="settings">
         <h3>Class Settings</h3>
-        <div>Setting</div>
+        <SettingInputField
+          label="Year"
+          stateVariable={year}
+          onChange={(event) => setYear(event.target.value)}
+          type="number"
+        />
+        <SettingInputField
+          label="Last Donation"
+          stateVariable={lastDonation}
+          onChange={(event) => setlLastDonation(event.target.value)}
+          type="number"
+          contentBefore="$"
+        />
+        <SettingInputField
+          label="Campus News"
+          stateVariable={news}
+          onChange={(event) => setNews(event.target.value)}
+        />
+        <SettingInputField
+          label="Asking Amount"
+          stateVariable={askAmount}
+          onChange={(event) => setAskAmount(event.target.value)}
+          type="number"
+          contentBefore="$"
+        />
+        <SettingInputField
+          label="Deadline"
+          stateVariable={deadline}
+          onChange={(event) => setDeadline(event.target.value)}
+          type="date"
+        />
+        <div className="generate-button">
+          <Button
+            appearance="primary"
+            size="medium"
+            onClick={onClickHandlerGenerateMessage}
+          >
+            Generate
+          </Button>
+        </div>
       </div>
+
       <div className="editor">
         <h3>Editor</h3>
         {displayGeneratedMessage()}
