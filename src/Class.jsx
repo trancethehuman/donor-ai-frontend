@@ -3,6 +3,7 @@ import React, { useState, useCallback } from "react";
 import { Endpoints } from "./consts";
 import { Button } from "@fluentui/react-components";
 import SettingInputField from "./SettingInputField";
+import MessageEditor from "./MessageEditor";
 
 const { CLASS: endpoint } = Endpoints;
 
@@ -25,7 +26,6 @@ const Class = () => {
   const [askAmount, setAskAmount] = useState();
   const [news, setNews] = useState();
   const [deadline, setDeadline] = useState();
-  const [classSettings, setClassSettings] = useState();
 
   const displayGeneratedMessage = () => {
     if (emptyEditor) {
@@ -43,13 +43,13 @@ const Class = () => {
   };
 
   const onClickHandlerGenerateMessage = async () => {
-    await setClassSettings({
+    const classSettings = {
       class_year: year,
       last_donation: lastDonation,
       annual_campus_milestones: news.split(",") || "none",
       ask_amount: askAmount,
       donation_deadline: deadline,
-    });
+    };
 
     try {
       setEmptyEditor(false);
@@ -117,6 +117,7 @@ const Class = () => {
       <div className="editor">
         <h3>Editor</h3>
         {displayGeneratedMessage()}
+        {/* <MessageEditor content={displayGeneratedMessage()} /> */}
       </div>
     </div>
   );
