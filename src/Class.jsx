@@ -1,19 +1,11 @@
 import "./Class.css";
-import React, { useState, useCallback } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Endpoints } from "./consts";
 import { Button } from "@fluentui/react-components";
 import SettingInputField from "./SettingInputField";
 import MessageEditor from "./MessageEditor";
 
 const { CLASS: endpoint } = Endpoints;
-
-const requestBody = {
-  class_year: 2016,
-  last_donation: 5000,
-  annual_campus_milestones: ["new wellness center"],
-  ask_amount: 7,
-  donation_deadline: "2023-02-04",
-};
 
 const Class = () => {
   const [generatedMessage, setGeneratedMessage] = useState(null);
@@ -27,17 +19,21 @@ const Class = () => {
   const [news, setNews] = useState();
   const [deadline, setDeadline] = useState();
 
+  const editor = useRef();
+
   const displayGeneratedMessage = () => {
     if (emptyEditor) {
-      return <p>Welcome to Denison's AI Assisted Donation Campaign!</p>;
+      return `Welcome to Denison's AI Assisted Donation Campaign!`;
     }
     if (loading) {
-      return <p>Generating...(this could take a few seconds)</p>;
+      return `Generating...(this could take a few seconds)`;
     }
 
     if (error) {
-      return <p>Error: {error.message}</p>;
+      return `Error: {error.message}`;
     }
+
+    console.log(generatedMessage);
 
     return generatedMessage?.choices[0].text;
   };
@@ -67,6 +63,10 @@ const Class = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    editor.current.value = displayGeneratedMessage();
+  });
 
   return (
     <div className="container">
@@ -116,8 +116,7 @@ const Class = () => {
 
       <div className="editor">
         <h3>Editor</h3>
-        {displayGeneratedMessage()}
-        {/* <MessageEditor content={displayGeneratedMessage()} /> */}
+        <textarea rows="20" cols="60" ref={editor}></textarea>
       </div>
     </div>
   );
