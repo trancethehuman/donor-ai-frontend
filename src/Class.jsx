@@ -1,6 +1,5 @@
 import "./Class.css";
 import React, { useState, useCallback } from "react";
-import { useGeneratedMessage } from "./generationHooks";
 import { Endpoints } from "./consts";
 import { Button } from "@fluentui/react-components";
 import SettingInputField from "./SettingInputField";
@@ -16,9 +15,8 @@ const requestBody = {
 };
 
 const Class = () => {
-  const [generatedMessage, setGeneratedMessage] = useState();
+  const [generatedMessage, setGeneratedMessage] = useState(null);
   const [emptyEditor, setEmptyEditor] = useState(true);
-  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState(null);
 
@@ -27,15 +25,14 @@ const Class = () => {
   const [askAmount, setAskAmount] = useState();
   const [news, setNews] = useState();
   const [deadline, setDeadline] = useState();
-
-  // const { data, loading, error } = useGeneratedMessage(endpoint, requestBody);
+  const [classSettings, setClassSettings] = useState();
 
   const displayGeneratedMessage = () => {
     if (emptyEditor) {
       return <p>Welcome to Denison's AI Assisted Donation Campaign!</p>;
     }
     if (loading) {
-      return <p>Loading...(this could take a few seconds)</p>;
+      return <p>Generating...(this could take a few seconds)</p>;
     }
 
     if (error) {
@@ -46,14 +43,24 @@ const Class = () => {
   };
 
   const onClickHandlerGenerateMessage = async () => {
-    console.log(`button clicked`);
+    await setClassSettings({
+      class_year: year,
+      last_donation: lastDonation,
+      annual_campus_milestones: news.split(",") || "none",
+      ask_amount: askAmount,
+      donation_deadline: deadline,
+    });
+
+    console.log(classSettings);
+    console.log(year, lastDonation);
+
     try {
       setEmptyEditor(false);
       setLoading(true);
       const result = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestBody),
+        body: JSON.stringify(classSettings),
       });
 
       setGeneratedMessage(await result.json());
@@ -67,22 +74,22 @@ const Class = () => {
   return (
     <div className="container">
       <div className="settings">
-        <h3>Class Settings</h3>
+        <h3>By Class</h3>
         <SettingInputField
-          label="Year"
+          label="Class Year"
           stateVariable={year}
           onChange={(event) => setYear(event.target.value)}
           type="number"
         />
         <SettingInputField
-          label="Last Donation"
+          label="Previous Year's Amount"
           stateVariable={lastDonation}
           onChange={(event) => setlLastDonation(event.target.value)}
           type="number"
           contentBefore="$"
         />
         <SettingInputField
-          label="Campus News"
+          label="Important Announcements"
           stateVariable={news}
           onChange={(event) => setNews(event.target.value)}
         />
