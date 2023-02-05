@@ -1,0 +1,13 @@
+.sub-setting {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.input-field,
+label {
+  display: block;
+}
+
+.input-field {
+  width: 12em;
+}

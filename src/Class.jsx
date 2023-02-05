@@ -1,5 +1,5 @@
 import "./Class.css";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useGeneratedMessage } from "./generationHooks";
 import { Endpoints } from "./consts";
 import { Button } from "@fluentui/react-components";
@@ -16,15 +16,24 @@ const requestBody = {
 };
 
 const Class = () => {
+  const [generatedMessage, setGeneratedMessage] = useState();
+  const [emptyEditor, setEmptyEditor] = useState(true);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(null);
+  const [error, setError] = useState(null);
+
   const [year, setYear] = useState();
   const [lastDonation, setlLastDonation] = useState();
   const [askAmount, setAskAmount] = useState();
   const [news, setNews] = useState();
   const [deadline, setDeadline] = useState();
 
-  const { data, loading, error } = useGeneratedMessage(endpoint, requestBody);
+  // const { data, loading, error } = useGeneratedMessage(endpoint, requestBody);
 
   const displayGeneratedMessage = () => {
+    if (emptyEditor) {
+      return <p>Welcome to Denison's AI Assisted Donation Campaign!</p>;
+    }
     if (loading) {
       return <p>Loading...(this could take a few seconds)</p>;
     }
@@ -33,11 +42,26 @@ const Class = () => {
       return <p>Error: {error.message}</p>;
     }
 
-    return data?.choices[0].text;
+    return generatedMessage?.choices[0].text;
   };
 
-  const onClickHandlerGenerateMessage = () => {
+  const onClickHandlerGenerateMessage = async () => {
     console.log(`button clicked`);
+    try {
+      setEmptyEditor(false);
+      setLoading(true);
+      const result = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestBody),
+      });
+
+      setGeneratedMessage(await result.json());
+      setLoading(false);
+    } catch (e) {
+      setError(error);
+      setLoading(false);
+    }
   };
 
   return (
