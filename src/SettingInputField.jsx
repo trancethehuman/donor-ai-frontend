@@ -12,13 +12,13 @@ const SettingInputField = ({
 
   return (
     <div className="sub-setting">
-      <Label htmlFor={inputId} size={"small"} className="label">
+      <Label htmlFor={inputId} size={"medium"} className="label">
         {label}
       </Label>
       <Input
         className="input-field"
         inputId={inputId}
-        size="small"
+        size="large"
         defaultValue={stateVariable}
         onChange={onChange}
         type={type}

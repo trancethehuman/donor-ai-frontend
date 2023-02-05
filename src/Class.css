@@ -1,19 +1,21 @@
 .container {
   overflow: hidden; /* clear float */
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
-.settings,
-.editor {
+.settings-area,
+.editor-area {
   display: inline-block;
   vertical-align: top;
 }
 
-.settings {
+.settings-area {
   float: left;
   padding: 1em;
 }
 
-.editor {
+.editor-area {
   float: right;
   width: 60%;
   padding: 1em;
@@ -22,4 +24,8 @@
 .generate-button {
   padding-top: 1em;
   padding-bottom: 1em;
+}
+
+.editor {
+  font-size: 1.3em;
 }

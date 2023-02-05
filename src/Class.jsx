@@ -21,23 +21,6 @@ const Class = () => {
 
   const editor = useRef();
 
-  const displayGeneratedMessage = () => {
-    if (emptyEditor) {
-      return `Welcome to Denison's AI Assisted Donation Campaign!`;
-    }
-    if (loading) {
-      return `Generating...(this could take a few seconds)`;
-    }
-
-    if (error) {
-      return `Error: {error.message}`;
-    }
-
-    console.log(generatedMessage);
-
-    return generatedMessage?.choices[0].text;
-  };
-
   const onClickHandlerGenerateMessage = async () => {
     const classSettings = {
       class_year: year,
@@ -65,13 +48,30 @@ const Class = () => {
   };
 
   useEffect(() => {
+    const displayGeneratedMessage = () => {
+      if (emptyEditor) {
+        return `Welcome to Denison's AI Assisted Donation Campaign!`;
+      }
+      if (loading) {
+        return `Generating...(this could take a few seconds)`;
+      }
+
+      if (error) {
+        return `Error: {error.message}`;
+      }
+
+      console.log(generatedMessage);
+
+      return generatedMessage?.choices[0].text;
+    };
+
     editor.current.value = displayGeneratedMessage();
-  });
+  }, [emptyEditor, error, generatedMessage, loading]);
 
   return (
     <div className="container">
-      <div className="settings">
-        <h3>By Class</h3>
+      <div className="settings-area">
+        <h2>By Class</h2>
         <SettingInputField
           label="Class Year"
           stateVariable={year}
@@ -106,17 +106,23 @@ const Class = () => {
         <div className="generate-button">
           <Button
             appearance="primary"
-            size="medium"
+            size="large"
             onClick={onClickHandlerGenerateMessage}
           >
             Generate
           </Button>
         </div>
       </div>
-
-      <div className="editor">
-        <h3>Editor</h3>
-        <textarea rows="20" cols="60" ref={editor}></textarea>
+      <div className="editor-area">
+        <br></br>
+        <br></br>
+        <br></br>
+        <textarea
+          rows="20"
+          cols="60"
+          ref={editor}
+          className="editor"
+        ></textarea>
       </div>
     </div>
   );
