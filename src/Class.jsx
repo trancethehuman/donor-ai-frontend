@@ -51,9 +51,6 @@ const Class = () => {
       donation_deadline: deadline,
     });
 
-    console.log(classSettings);
-    console.log(year, lastDonation);
-
     try {
       setEmptyEditor(false);
       setLoading(true);
