@@ -1,4 +1,4 @@
 export const Endpoints = {
-  CLASS: "http://127.0.0.1:8000/by-class",
-  INDIVIDUAL_DONOR: "http://127.0.0.1:8000/by-donor",
+  CLASS: import.meta.env.VITE_CLASS_ENDPOINT,
+  INDIVIDUAL_DONOR: import.meta.env.VITE_INDIVIDUAL_DONOR_ENDPOINT,
 };

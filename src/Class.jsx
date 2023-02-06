@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { Endpoints } from "./consts";
 import { Button } from "@fluentui/react-components";
 import SettingInputField from "./SettingInputField";
-import MessageEditor from "./MessageEditor";
 
 const { CLASS: endpoint } = Endpoints;
 
@@ -20,6 +19,8 @@ const Class = () => {
   const [deadline, setDeadline] = useState();
 
   const editor = useRef();
+
+  console.log(endpoint);
 
   const onClickHandlerGenerateMessage = async () => {
     const classSettings = {
