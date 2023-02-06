@@ -10,14 +10,20 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />,
   },
+  {
+    path: "individual-campaign",
+    element: <IndividualCampaign />,
+  },
+  {
+    path: "class-campaign",
+    element: <Class />,
+  },
 ]);
 
 function App() {
   return (
     <div className="App">
       <RouterProvider router={router} />
-      {/* <IndividualCampaign />
-      <Class /> */}
     </div>
   );
 }

@@ -1,0 +1,27 @@
+.link {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+.home-links-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-link-button {
+  padding: 1em;
+}
+
+.header {
+  font-size: 3em;
+}
