@@ -24,23 +24,26 @@ const Class = () => {
   const editor = useRef();
 
   const onClickHandlerGenerateMessage = async () => {
-    const classSettings = {
-      class_year: year,
-      last_donation: lastDonation,
-      annual_campus_milestones: news.split(",") || "none",
-      ask_amount: askAmount,
-      donation_deadline: deadline,
-      length: length,
-      creativity: creativity,
+    const requestBody = {
+      class_year: year || 2023,
+      last_donation: lastDonation || 0,
+      annual_campus_milestones: news
+        ? news.split(",")
+        : ["skip this part. no new events"],
+      ask_amount: askAmount || 0,
+      donation_deadline: deadline || new Date().toISOString().split("T")[0],
+      length: length || MessageLengths[0].value,
+      creativity: creativity || CreativityLevels[0].value,
     };
 
     try {
+      console.log(requestBody);
       setEmptyEditor(false);
       setLoading(true);
       const result = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(classSettings),
+        body: JSON.stringify(requestBody),
       });
 
       setGeneratedMessage(await result.json());
@@ -54,10 +57,10 @@ const Class = () => {
   useEffect(() => {
     const displayGeneratedMessage = () => {
       if (emptyEditor) {
-        return `Welcome to Denison's AI Assisted Donation Campaign Message Writer!\n\nFill out the settings panel on the left, then hit "Generate" to see some magic.`;
+        return `Welcome to Denison's AI-Assisted Fundraising Ghostwriter!\n\nFill out the setting fields on the left, then hit "Generate" to see some magic.`;
       }
       if (loading) {
-        return `Generating...(this could take up to 30 seconds)`;
+        return `Beep boop...Generating...\n\n(longer messages could take up to 30 seconds)`;
       }
 
       if (error) {
@@ -91,7 +94,7 @@ const Class = () => {
           label="Important Announcements"
           stateVariable={news}
           onChange={(event) => setNews(event.target.value)}
-          placeholder="Campus Events"
+          placeholder="Campus News"
         />
         <SettingInputField
           label="Asking Amount"
