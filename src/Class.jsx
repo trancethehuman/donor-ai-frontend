@@ -57,7 +57,7 @@ const Class = () => {
         return `Welcome to Denison's AI Assisted Donation Campaign Message Writer!\n\nFill out the settings panel on the left, then hit "Generate" to see some magic.`;
       }
       if (loading) {
-        return `Generating...(this could take a few seconds)`;
+        return `Generating...(this could take up to 30 seconds)`;
       }
 
       if (error) {
