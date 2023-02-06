@@ -1,6 +1,6 @@
 import "./Class.css";
 import React, { useState, useRef, useEffect } from "react";
-import { Endpoints, CreativityLevels } from "./consts";
+import { Endpoints, CreativityLevels, MessageLengths } from "./consts";
 import { Button } from "@fluentui/react-components";
 import SettingInputField from "./SettingInputField";
 import SettingDropdown from "./SettingDropdown";
@@ -18,6 +18,8 @@ const Class = () => {
   const [askAmount, setAskAmount] = useState();
   const [news, setNews] = useState();
   const [deadline, setDeadline] = useState();
+  const [creativity, setCreativity] = useState();
+  const [length, setLength] = useState();
 
   const editor = useRef();
 
@@ -28,6 +30,8 @@ const Class = () => {
       annual_campus_milestones: news.split(",") || "none",
       ask_amount: askAmount,
       donation_deadline: deadline,
+      length: length,
+      creativity: creativity,
     };
 
     try {
@@ -69,7 +73,7 @@ const Class = () => {
   return (
     <div className="container">
       <div className="settings-area">
-        <h2>By Class</h2>
+        <h2>Class Campaign</h2>
         <SettingInputField
           label="Class Year"
           stateVariable={year}
@@ -87,6 +91,7 @@ const Class = () => {
           label="Important Announcements"
           stateVariable={news}
           onChange={(event) => setNews(event.target.value)}
+          placeholder="Campus Events"
         />
         <SettingInputField
           label="Asking Amount"
@@ -94,6 +99,7 @@ const Class = () => {
           onChange={(event) => setAskAmount(event.target.value)}
           type="number"
           contentBefore="$"
+          placeholder="In USD"
         />
         <SettingInputField
           label="Deadline"
@@ -104,7 +110,14 @@ const Class = () => {
         <SettingDropdown
           label="Creativity Level"
           options={CreativityLevels}
-          placeholder="Pick one for the AI model"
+          stateVariable={creativity}
+          onChange={setCreativity}
+        />
+        <SettingDropdown
+          label="Length"
+          options={MessageLengths}
+          stateVariable={length}
+          onChange={setLength}
         />
         <div className="generate-button">
           <Button
@@ -117,6 +130,7 @@ const Class = () => {
         </div>
       </div>
       <div className="editor-area">
+        <br></br>
         <br></br>
         <br></br>
         <br></br>

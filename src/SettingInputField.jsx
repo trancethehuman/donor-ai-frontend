@@ -7,6 +7,7 @@ const SettingInputField = ({
   stateVariable,
   type = "text",
   contentBefore = undefined,
+  placeholder = undefined,
 }) => {
   const inputId = useId("input");
 
@@ -23,6 +24,7 @@ const SettingInputField = ({
         onChange={onChange}
         type={type}
         contentBefore={contentBefore}
+        placeholder={placeholder}
       />
     </div>
   );

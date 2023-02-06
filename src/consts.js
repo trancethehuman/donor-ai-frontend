@@ -4,7 +4,13 @@ export const Endpoints = {
 };
 
 export const CreativityLevels = [
-  { label: "low", id: 1, value: 0.5 },
-  { label: "normal", id: 2, value: 1 },
-  { label: "high", id: 3, value: 1.4 },
+  { label: "More Direct", id: 1, value: 0.7 },
+  { label: "Normal", id: 2, value: 1 },
+  { label: "More Creative", id: 3, value: 1.2 },
+];
+
+export const MessageLengths = [
+  { label: "Shorter", id: 1, value: "less than 100 words" },
+  { label: "Medium", id: 2, value: "from 150 to 300 words" },
+  { label: "Longer", id: 3, value: "400 to 600 words" },
 ];
