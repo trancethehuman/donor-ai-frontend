@@ -135,7 +135,7 @@ const Class = () => {
         <br></br>
         <br></br>
         <textarea
-          rows="20"
+          rows="25"
           cols="60"
           ref={editor}
           className="editor"
