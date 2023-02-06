@@ -1,8 +1,9 @@
 import "./Class.css";
 import React, { useState, useRef, useEffect } from "react";
-import { Endpoints } from "./consts";
+import { Endpoints, CreativityLevels } from "./consts";
 import { Button } from "@fluentui/react-components";
 import SettingInputField from "./SettingInputField";
+import SettingDropdown from "./SettingDropdown";
 
 const { CLASS: endpoint } = Endpoints;
 
@@ -19,8 +20,6 @@ const Class = () => {
   const [deadline, setDeadline] = useState();
 
   const editor = useRef();
-
-  console.log(endpoint);
 
   const onClickHandlerGenerateMessage = async () => {
     const classSettings = {
@@ -51,7 +50,7 @@ const Class = () => {
   useEffect(() => {
     const displayGeneratedMessage = () => {
       if (emptyEditor) {
-        return `Welcome to Denison's AI Assisted Donation Campaign!`;
+        return `Welcome to Denison's AI Assisted Donation Campaign Message Writer!\n\nFill out the settings panel on the left, then hit "Generate" to see some magic.`;
       }
       if (loading) {
         return `Generating...(this could take a few seconds)`;
@@ -60,8 +59,6 @@ const Class = () => {
       if (error) {
         return `Error: {error.message}`;
       }
-
-      console.log(generatedMessage);
 
       return generatedMessage?.choices[0].text;
     };
@@ -103,6 +100,11 @@ const Class = () => {
           stateVariable={deadline}
           onChange={(event) => setDeadline(event.target.value)}
           type="date"
+        />
+        <SettingDropdown
+          label="Creativity Level"
+          options={CreativityLevels}
+          placeholder="Pick one for the AI model"
         />
         <div className="generate-button">
           <Button

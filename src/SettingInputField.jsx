@@ -1,5 +1,5 @@
 import { Input, Label, useId } from "@fluentui/react-components";
-import "./SettingInputField.css";
+import "./Settings.css";
 
 const SettingInputField = ({
   label,

@@ -11,3 +11,8 @@ label {
 .input-field {
   width: 12em;
 }
+
+.dropdown {
+  height: 3em;
+  width: 14.5em;
+}

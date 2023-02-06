@@ -7,11 +7,6 @@ import "./Home.css";
 const Home = () => {
   const navigate = useNavigate();
 
-  // use useNavigate and navigate() to make sure we go to link no matter where on the button surface we clicked.
-  function handleClick(path) {
-    navigate(path);
-  }
-
   return (
     <div className="home-links-area">
       <h1 className="header">AI-Assisted</h1>
