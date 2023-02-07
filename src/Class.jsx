@@ -4,6 +4,7 @@ import { Endpoints, CreativityLevels, MessageLengths } from "./consts";
 import { Button } from "@fluentui/react-components";
 import SettingInputField from "./SettingInputField";
 import SettingDropdown from "./SettingDropdown";
+import { useNavigate } from "react-router-dom";
 
 const { CLASS: endpoint } = Endpoints;
 
@@ -21,6 +22,8 @@ const Class = () => {
   const [creativity, setCreativity] = useState();
   const [length, setLength] = useState();
 
+  const navigate = useNavigate();
+
   const editor = useRef();
 
   const onClickHandlerGenerateMessage = async () => {
@@ -37,7 +40,6 @@ const Class = () => {
     };
 
     try {
-      console.log(requestBody);
       setEmptyEditor(false);
       setLoading(true);
       const result = await fetch(endpoint, {
@@ -57,7 +59,7 @@ const Class = () => {
   useEffect(() => {
     const displayGeneratedMessage = () => {
       if (emptyEditor) {
-        return `Welcome to Denison's AI-Assisted Fundraising Ghostwriter!\n\nFill out the setting fields on the left, then hit "Generate" to see some magic.`;
+        return `Welcome to Denison's AI-Assisted Fundraising Ghostwriter!\n\nFill out the setting fields on the left, then hit "Generate" to see some magic.\n\n\n\n*Pro tip: you can actually edit this writing area! Go ahead and make edits after the AI gives you results to get the best solicitation letter.`;
       }
       if (loading) {
         return `Beep boop...Generating...\n\n(longer messages could take up to 30 seconds)`;
@@ -75,8 +77,8 @@ const Class = () => {
 
   return (
     <div className="container">
+      <h1 className="campaign-header">Class Campaign</h1>
       <div className="settings-area">
-        <h2>Class Campaign</h2>
         <SettingInputField
           label="Class Year"
           stateVariable={year}
@@ -89,12 +91,7 @@ const Class = () => {
           onChange={(event) => setlLastDonation(event.target.value)}
           type="number"
           contentBefore="$"
-        />
-        <SettingInputField
-          label="Important Announcements"
-          stateVariable={news}
-          onChange={(event) => setNews(event.target.value)}
-          placeholder="Campus News"
+          placeholder="In USD"
         />
         <SettingInputField
           label="Asking Amount"
@@ -103,6 +100,12 @@ const Class = () => {
           type="number"
           contentBefore="$"
           placeholder="In USD"
+        />
+        <SettingInputField
+          label="Important Announcements"
+          stateVariable={news}
+          onChange={(event) => setNews(event.target.value)}
+          placeholder="Separate with comma"
         />
         <SettingInputField
           label="Deadline"
@@ -130,16 +133,22 @@ const Class = () => {
           >
             Generate
           </Button>
+          <br></br>
+          <br></br>
+          <br></br>
+          <Button
+            size="large"
+            appearance="secondary"
+            onClick={() => navigate("/")}
+          >
+            Go back to Home
+          </Button>
         </div>
       </div>
       <div className="editor-area">
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
         <textarea
           rows="25"
-          cols="60"
+          cols="42"
           ref={editor}
           className="editor"
         ></textarea>

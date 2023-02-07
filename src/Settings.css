@@ -1,5 +1,4 @@
 .sub-setting {
-  padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
 
@@ -9,10 +8,10 @@ label {
 }
 
 .input-field {
-  width: 12em;
+  width: 14em;
 }
 
 .dropdown {
   height: 3em;
-  width: 14.4em;
+  width: 17em;
 }

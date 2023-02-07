@@ -10,7 +10,8 @@ const Home = () => {
   return (
     <div className="home-links-area">
       <h1 className="header">AI-Assisted</h1>
-      <h1 className="header">Donation Solicitation</h1>
+      <h1 className="header">Solicitation Ghostwriter</h1>
+      <h2>For Denison's Annual Fund</h2>
       <br></br>
       <img src={steveJPG} />
       <br></br>
