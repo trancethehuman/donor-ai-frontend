@@ -68,6 +68,8 @@ const DonorCard = ({ donorData, messageSettings }) => {
       if (generatedMessage) {
         return generatedMessage?.choices[0].text;
       }
+
+      return `Something weird happened in my server. Please hit the Generate button again!`
     };
 
     editor.current.value = displayGeneratedMessage();
