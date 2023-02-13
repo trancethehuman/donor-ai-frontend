@@ -1,8 +1,6 @@
-import XLSX from "xlsx";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SpreadsheetViewer from "./SpreadsheetViewer";
 import "./MergeFields.css";
-import { stox } from "./spreadsheetUtils";
 import { useSpreadsheetData } from "./spreadsheetHooks";
 
 const MergeFields = () => {
