@@ -41,7 +41,7 @@ const Home = () => {
           appearance="primary"
           onClick={() => navigate("/merge-fields")}
         >
-          Generate by Merge Fields
+          Generate AI content by Merge Fields
         </Button>
       </div>
     </div>
