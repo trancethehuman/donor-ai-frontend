@@ -5,11 +5,16 @@ import Home from "./Home";
 import React from "react";
 import MergeFields from "./MergeFields";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Ghostwriter from "./Ghostwriter";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "ghostwriter",
+    element: <Ghostwriter />,
   },
   {
     path: "individual-campaign",
