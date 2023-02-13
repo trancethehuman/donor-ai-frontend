@@ -6,6 +6,8 @@ import React from "react";
 import MergeFields from "./MergeFields";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Ghostwriter from "./Ghostwriter";
+import Help from "./Help";
+import About from "./About";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
   {
     path: "individual-campaign",
     element: <IndividualCampaign />,
+  },
+  {
+    path: "help",
+    element: <Help />,
+  },
+  {
+    path: "about",
+    element: <About />,
   },
   {
     path: "class-campaign",
