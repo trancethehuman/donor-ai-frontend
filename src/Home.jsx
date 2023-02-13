@@ -1,4 +1,4 @@
-import LeftSideBar from "./LeftSideBar";
+import LeftSidebar from "./LeftSidebar";
 import MenuNavButton from "./MenuNavButton";
 
 import "./Home.css";
@@ -7,12 +7,12 @@ import { DenisonLogoWithSubtitle } from "./Logos";
 const Home = () => {
   return (
     <div className="container">
-      <LeftSideBar hasTopPadding>
+      <LeftSidebar hasTopPadding>
         <MenuNavButton label="AI Merge Fields" route="/merge-fields" />
         <MenuNavButton label="Ghostwriter" route="/ghostwriter" />
         <MenuNavButton label="Help" route="/help" />
         <MenuNavButton label="About" route="/about" />
-      </LeftSideBar>
+      </LeftSidebar>
       <div className="branding">
         <DenisonLogoWithSubtitle />
         <br></br>

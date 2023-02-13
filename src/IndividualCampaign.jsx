@@ -8,7 +8,7 @@ import { MessageLengths } from "./consts";
 import "./IndividualCampaign.css";
 import MenuNavButton from "./MenuNavButton";
 import { useNavigate } from "react-router-dom";
-import LeftSideBar from "./LeftSideBar";
+import LeftSidebar from "./LeftSidebar";
 
 const IndividualCampaign = () => {
   const [news, setNews] = useState();
@@ -33,7 +33,7 @@ const IndividualCampaign = () => {
   return (
     <div className="container">
       <h1 className="campaign-header">Individual Donors Campaign</h1>
-      <LeftSideBar>
+      <LeftSidebar>
         <div className="instructions-area">
           <h2>Instructions</h2>
           <p>Set the general settings of an email down below.</p>
@@ -79,7 +79,7 @@ const IndividualCampaign = () => {
           label="Return to Home"
           appearance="secondary"
         />
-      </LeftSideBar>
+      </LeftSidebar>
       <div className="donor-area">
         <h3>Scroll down for more donors ↓ </h3>
         <br></br>

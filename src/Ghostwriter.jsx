@@ -1,9 +1,9 @@
-import LeftSideBar from "./LeftSideBar";
+import LeftSidebar from "./LeftSidebar";
 import MenuNavButton from "./MenuNavButton";
 
 const Ghostwriter = () => {
   return (
-    <LeftSideBar hasTopPadding>
+    <LeftSidebar hasTopPadding>
       <MenuNavButton
         label="Individual Donors Campaign"
         route="/individual-campaign"
@@ -11,7 +11,7 @@ const Ghostwriter = () => {
       <MenuNavButton label="Class-wide Campaign" route="/class-campaign" />
 
       <MenuNavButton appearance="secondary" route="/" label="Return to Home" />
-    </LeftSideBar>
+    </LeftSidebar>
   );
 };
 

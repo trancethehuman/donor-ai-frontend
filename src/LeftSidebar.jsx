@@ -1,7 +1,7 @@
 import "./LeftSidebar.css";
 import classNames from "classnames";
 
-const LeftSideBar = ({ children, hasTopPadding = false }) => {
+const LeftSidebar = ({ children, hasTopPadding = false }) => {
   const namesForClass = classNames("left-sidebar", {
     "has-top-padding": hasTopPadding,
   });
@@ -9,4 +9,4 @@ const LeftSideBar = ({ children, hasTopPadding = false }) => {
   return <div className={namesForClass}>{children}</div>;
 };
 
-export default LeftSideBar;
+export default LeftSidebar;
