@@ -1,5 +1,10 @@
 import XLSX from "xlsx";
 
+/**
+ * Converts a SheetJS Workbook to X-Spreadsheet compatible data. Demo at: https://docs.sheetjs.com/xspreadsheet/
+ * @param wb - The workbook object
+ * @returns An array of objects. Each object represents a sheet in the workbook.
+ */
 export const stox = (wb) => {
   var out = [];
   wb.SheetNames.forEach(function (name) {

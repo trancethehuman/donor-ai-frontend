@@ -3,25 +3,15 @@ import { useState, useEffect } from "react";
 import SpreadsheetViewer from "./SpreadsheetViewer";
 import "./MergeFields.css";
 import { stox } from "./spreadsheetUtils";
+import { useSpreadsheetData } from "./spreadsheetHooks";
 
 const MergeFields = () => {
-  const [sheetData, setSheetData] = useState();
-
-  const fileToArrayBuffer = (file) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const data = e.target.result;
-      const workbook = XLSX.read(data);
-      const xSpreadsheetData = stox(workbook);
-
-      setSheetData(xSpreadsheetData);
-    };
-    reader.readAsArrayBuffer(file);
-  };
+  const [file, setFile] = useState();
+  const sheetData = useSpreadsheetData(file);
 
   const fileUploadHandler = (e) => {
     const uploadedFile = e.target.files[0];
-    fileToArrayBuffer(uploadedFile);
+    setFile(uploadedFile);
   };
 
   return (
