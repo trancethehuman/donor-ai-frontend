@@ -35,8 +35,7 @@ const SpreadsheetViewer = ({ data = {}, height, options, width }) => {
 
   useEffect(() => {
     sheetObject.current.change(() => {
-      const newData = sheetObject.current.getData();
-      console.log(newData);
+      const newData = sheetObject.current.getData(); // ToDo: move this to export button
     });
   });
 

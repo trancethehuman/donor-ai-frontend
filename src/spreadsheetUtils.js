@@ -12,7 +12,7 @@ export const stox = (wb) => {
     var ws = wb.Sheets[name];
     if (!ws || !ws["!ref"]) return;
     var range = XLSX.utils.decode_range(ws["!ref"]);
-    // sheet_to_json will lost empty row and col at begin as default
+    // sheet_to_json will lose empty row and col at begin as default
     range.s = { r: 0, c: 0 };
     var aoa = XLSX.utils.sheet_to_json(ws, {
       raw: false,
