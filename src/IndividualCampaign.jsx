@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { CreativityLevels } from "./consts";
 import { MessageLengths } from "./consts";
 import "./IndividualCampaign.css";
-import { Button } from "@fluentui/react-components";
+import MenuNavButton from "./MenuNavButton";
 import { useNavigate } from "react-router-dom";
 import LeftSideBar from "./LeftSideBar";
 
@@ -72,15 +72,12 @@ const IndividualCampaign = () => {
         <br></br>
         <br></br>
         <br></br>
-        <div>
-          <Button
-            size="large"
-            appearance="secondary"
-            onClick={() => navigate("/")}
-          >
-            Go back to Home
-          </Button>
-        </div>
+
+        <MenuNavButton
+          route="/"
+          label="Go back to Home"
+          appearance="secondary"
+        ></MenuNavButton>
       </LeftSideBar>
       <div className="donor-area">
         <h3>Scroll down for more donors ↓ </h3>

@@ -2,7 +2,12 @@ import { Button } from "@fluentui/react-components";
 import "./MenuNavButton.css";
 import { useNavigate } from "react-router-dom";
 
-const MenuNavButton = ({ route, label, appearance = "primary" }) => {
+const MenuNavButton = ({
+  route,
+  label,
+  appearance = "primary",
+  isBackButton = false,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -10,9 +15,9 @@ const MenuNavButton = ({ route, label, appearance = "primary" }) => {
       <Button
         size="large"
         appearance={appearance}
-        onClick={() => navigate(route)}
+        onClick={!isBackButton ? () => navigate(route) : () => navigate(-1)}
       >
-        {label}
+        {!isBackButton ? label : "Back"}
       </Button>
     </div>
   );

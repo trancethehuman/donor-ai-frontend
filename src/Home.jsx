@@ -8,10 +8,10 @@ const Home = () => {
   return (
     <div className="container">
       <LeftSideBar hasTopPadding>
-        <MenuNavButton label="AI Merge Fields" route="merge-fields" />
-        <MenuNavButton label="Ghostwriter" route="ghostwriter" />
-        <MenuNavButton label="Help" route="help" />
-        <MenuNavButton label="About" route="about" />
+        <MenuNavButton label="AI Merge Fields" route="/merge-fields" />
+        <MenuNavButton label="Ghostwriter" route="/ghostwriter" />
+        <MenuNavButton label="Help" route="/help" />
+        <MenuNavButton label="About" route="/about" />
       </LeftSideBar>
       <div className="branding">
         <DenisonLogoWithSubtitle />
