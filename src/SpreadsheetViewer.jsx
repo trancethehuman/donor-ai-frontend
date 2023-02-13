@@ -2,12 +2,12 @@ import Spreadsheet from "x-data-spreadsheet";
 import { useRef, useState, useEffect } from "react";
 
 const SpreadsheetViewer = ({ data = {}, height, options, width }) => {
-  const sheetEl = useRef();
-  const sheetRef = useRef();
-  const [currentSheetData, setCurrentSheetData] = useState(data);
+  const spreadsheetHTML = useRef();
+  const sheetObject = useRef();
+  const [uploadedSheetData, setUploadedSheetData] = useState(data);
 
   useEffect(() => {
-    const element = sheetEl.current;
+    const element = spreadsheetHTML.current;
     const sheet = new Spreadsheet("#x-spreadsheet", {
       view: {
         height: () =>
@@ -18,22 +18,25 @@ const SpreadsheetViewer = ({ data = {}, height, options, width }) => {
           document.documentElement.clientWidth,
       },
       ...options,
-    }).loadData(currentSheetData); // load data
+    })
+      .loadData(uploadedSheetData)
+      .change((data) => console.log(data));
 
-    sheetRef.current = sheet;
+    sheetObject.current = sheet;
 
     return () => {
       element.innerHTML = "";
     };
-  }, [options, currentSheetData]);
+  }, [options, uploadedSheetData]);
 
   useEffect(() => {
-    setCurrentSheetData(data);
+    setUploadedSheetData(data);
   }, [data]);
 
   useEffect(() => {
-    sheetRef.current.change((data) => {
-      setCurrentSheetData(data);
+    sheetObject.current.change(() => {
+      const newData = sheetObject.current.getData();
+      console.log(uploadedSheetData);
     });
   });
 
@@ -41,7 +44,7 @@ const SpreadsheetViewer = ({ data = {}, height, options, width }) => {
     <div
       style={{ height: height || "100%", width: width || "100%" }}
       id="x-spreadsheet"
-      ref={sheetEl}
+      ref={spreadsheetHTML}
     />
   );
 };
