@@ -3,6 +3,7 @@ import Class from "./Class";
 import IndividualCampaign from "./IndividualCampaign";
 import Home from "./Home";
 import React from "react";
+import MergeFields from "./MergeFields";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "class-campaign",
     element: <Class />,
+  },
+  {
+    path: "merge-fields",
+    element: <MergeFields />,
   },
 ]);
 

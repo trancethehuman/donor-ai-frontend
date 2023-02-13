@@ -35,6 +35,15 @@ const Home = () => {
           Class-wide Campaign
         </Button>
       </div>
+      <div className="home-link-button">
+        <Button
+          size="large"
+          appearance="primary"
+          onClick={() => navigate("/merge-fields")}
+        >
+          Generate by Merge Fields
+        </Button>
+      </div>
     </div>
   );
 };
