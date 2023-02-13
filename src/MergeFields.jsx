@@ -2,6 +2,8 @@ import { useState } from "react";
 import SpreadsheetViewer from "./SpreadsheetViewer";
 import "./MergeFields.css";
 import { useSpreadsheetData } from "./spreadsheetHooks";
+import LeftSidebar from "./LeftSidebar";
+import MenuNavButton from "./MenuNavButton";
 
 const MergeFields = () => {
   const [file, setFile] = useState();
@@ -13,10 +15,19 @@ const MergeFields = () => {
   };
 
   return (
-    <div>
-      <input type="file" onChange={fileUploadHandler} />
-      <div className="Spreadsheet">
-        <SpreadsheetViewer height="100%" data={sheetData} />
+    <div className="container">
+      <LeftSidebar>
+        <input type="file" onChange={fileUploadHandler} />
+        <MenuNavButton isBackButton />
+        <MenuNavButton
+          label="Return to Home"
+          appearance="secondary"
+          route="/"
+        />
+      </LeftSidebar>
+
+      <div className="spreadsheet-area">
+        <SpreadsheetViewer height="100%" width="100%" data={sheetData} />
       </div>
     </div>
   );

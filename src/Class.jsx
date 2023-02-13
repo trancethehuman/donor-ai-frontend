@@ -6,6 +6,7 @@ import SettingInputField from "./SettingInputField";
 import SettingDropdown from "./SettingDropdown";
 import { useNavigate } from "react-router-dom";
 import LeftSideBar from "./LeftSideBar";
+import MenuNavButton from "./MenuNavButton";
 
 const { CLASS: endpoint } = Endpoints;
 
@@ -126,25 +127,24 @@ const Class = () => {
           stateVariable={length}
           onChange={setLength}
         />
-        <div className="generate-button">
-          <Button
-            appearance="primary"
-            size="large"
-            onClick={onClickHandlerGenerateMessage}
-          >
-            Generate
-          </Button>
-          <br></br>
-          <br></br>
-          <br></br>
-          <Button
-            size="large"
-            appearance="secondary"
-            onClick={() => navigate("/")}
-          >
-            Go back to Home
-          </Button>
-        </div>
+
+        <Button
+          appearance="primary"
+          size="large"
+          onClick={onClickHandlerGenerateMessage}
+        >
+          Generate
+        </Button>
+        <br></br>
+        <br></br>
+
+        <MenuNavButton isBackButton />
+
+        <MenuNavButton
+          label="Return to Home"
+          route="/"
+          appearance="secondary"
+        />
       </LeftSideBar>
       <div className="editor-area">
         <textarea

@@ -44,6 +44,7 @@ const IndividualCampaign = () => {
         </div>
 
         <br></br>
+
         <h2>General Settings</h2>
         <SettingInputField
           label="Important Announcements"
@@ -70,14 +71,14 @@ const IndividualCampaign = () => {
           onChange={setLength}
         />
         <br></br>
-        <br></br>
-        <br></br>
+
+        <MenuNavButton isBackButton />
 
         <MenuNavButton
           route="/"
-          label="Go back to Home"
+          label="Return to Home"
           appearance="secondary"
-        ></MenuNavButton>
+        />
       </LeftSideBar>
       <div className="donor-area">
         <h3>Scroll down for more donors ↓ </h3>

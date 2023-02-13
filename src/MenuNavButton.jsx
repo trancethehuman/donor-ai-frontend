@@ -14,7 +14,7 @@ const MenuNavButton = ({
     <div className="menu-nav-button">
       <Button
         size="large"
-        appearance={appearance}
+        appearance={!isBackButton ? appearance : "secondary"}
         onClick={!isBackButton ? () => navigate(route) : () => navigate(-1)}
       >
         {!isBackButton ? label : "Back"}

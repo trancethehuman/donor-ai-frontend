@@ -10,7 +10,7 @@ const Ghostwriter = () => {
       />
       <MenuNavButton label="Class-wide Campaign" route="/class-campaign" />
 
-      <MenuNavButton isBackButton />
+      <MenuNavButton appearance="secondary" route="/" label="Return to Home" />
     </LeftSideBar>
   );
 };
