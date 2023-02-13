@@ -1,31 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@fluentui/react-components";
+import LeftSideBar from "./LeftSideBar";
+import BackButton from "./BackButton";
+import MenuNavButton from "./MenuNavButton";
 
 const Ghostwriter = () => {
   const navigate = useNavigate();
 
   return (
-    <>
-      <div className="home-link-button">
-        <Button
-          size="large"
-          appearance="primary"
-          onClick={() => navigate("/individual-campaign")}
-        >
-          Individual Donors Campaign
-        </Button>
-      </div>
+    <LeftSideBar hasTopPadding>
+      <MenuNavButton
+        label="Individual Donors Campaign"
+        route="individual-campaign"
+      />
+      <MenuNavButton label="Class-wide Campaign" route="class-campaign" />
 
-      <div className="home-link-button">
-        <Button
-          size="large"
-          appearance="primary"
-          onClick={() => navigate("/class-campaign")}
-        >
-          Class-wide Campaign
-        </Button>
-      </div>
-    </>
+      <BackButton />
+    </LeftSideBar>
   );
 };
 

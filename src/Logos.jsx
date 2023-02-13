@@ -7,7 +7,7 @@ export const DenisonLogo = ({ width = 50 }) => {
 
 export const DenisonLogoWithSubtitle = ({ width = 250 }) => {
   return (
-    <div className="logo-with-subtitle">
+    <div className="logo-with-subtitle-area">
       <img src={denisonLogo} width={width.toString()} />
       <p className="logo-subtitle">Annual Fund AI Assistant</p>
     </div>

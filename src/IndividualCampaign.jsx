@@ -8,6 +8,7 @@ import { MessageLengths } from "./consts";
 import "./IndividualCampaign.css";
 import { Button } from "@fluentui/react-components";
 import { useNavigate } from "react-router-dom";
+import LeftSideBar from "./LeftSideBar";
 
 const IndividualCampaign = () => {
   const [news, setNews] = useState();
@@ -32,13 +33,16 @@ const IndividualCampaign = () => {
   return (
     <div className="container">
       <h1 className="campaign-header">Individual Donors Campaign</h1>
-      <div className="settings-area">
-        <h2>Instructions</h2>
-        <p>Set the general settings of an email down below.</p>
-        <p>
-          Click "Generate" on each to get a custom email message curated just
-          for that donor.
-        </p>
+      <LeftSideBar>
+        <div className="instructions-area">
+          <h2>Instructions</h2>
+          <p>Set the general settings of an email down below.</p>
+          <p>
+            Click "Generate" on each to get a custom email message curated just
+            for that donor.
+          </p>
+        </div>
+
         <br></br>
         <h2>General Settings</h2>
         <SettingInputField
@@ -77,7 +81,7 @@ const IndividualCampaign = () => {
             Go back to Home
           </Button>
         </div>
-      </div>
+      </LeftSideBar>
       <div className="donor-area">
         <h3>Scroll down for more donors ↓ </h3>
         <br></br>

@@ -1,54 +1,26 @@
-import { useNavigate } from "react-router-dom";
-import { Button } from "@fluentui/react-components";
+import LeftSideBar from "./LeftSideBar";
+import MenuNavButton from "./MenuNavButton";
 
 import "./Home.css";
 import { DenisonLogoWithSubtitle } from "./Logos";
 
 const Home = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="container">
-      <div className="home-links-area">
-        <div className="home-link-button">
-          <Button
-            size="large"
-            appearance="primary"
-            onClick={() => navigate("/merge-fields")}
-          >
-            AI Merge Fields
-          </Button>
-        </div>
-        <div className="home-link-button">
-          <Button
-            size="large"
-            appearance="primary"
-            onClick={() => navigate("/ghostwriter")}
-          >
-            Ghostwriter
-          </Button>
-        </div>
-        <div className="home-link-button">
-          <Button
-            size="large"
-            appearance="primary"
-            onClick={() => navigate("/help")}
-          >
-            Help
-          </Button>
-        </div>
-        <div className="home-link-button">
-          <Button
-            size="large"
-            appearance="primary"
-            onClick={() => navigate("/about")}
-          >
-            About
-          </Button>
-        </div>
-      </div>
+      <LeftSideBar hasTopPadding>
+        <MenuNavButton label="AI Merge Fields" route="merge-fields" />
+        <MenuNavButton label="Ghostwriter" route="ghostwriter" />
+        <MenuNavButton label="Help" route="help" />
+        <MenuNavButton label="About" route="about" />
+      </LeftSideBar>
       <div className="branding">
         <DenisonLogoWithSubtitle />
+        <br></br>
+        <br></br>
+        <br></br>
+        <div className="home-tagline">
+          <p>Increase alumni engagement through donation messaging</p>
+        </div>
       </div>
     </div>
   );

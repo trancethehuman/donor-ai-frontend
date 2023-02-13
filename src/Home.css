@@ -2,12 +2,6 @@
   overflow: hidden; /* clear float */
 }
 
-.branding,
-.home-links-area {
-  display: inline-block;
-  vertical-align: top;
-}
-
 .home-links-area {
   float: left;
   padding-top: 15rem;
@@ -15,8 +9,9 @@
 
 .branding {
   padding-top: 15rem;
+  padding-right: 5%;
+  padding-left: 5%;
   float: right;
-  width: 60%;
 }
 
 .link {
@@ -27,16 +22,10 @@ a:visited {
   color: inherit;
 }
 
-.home-link-button {
-  padding: 1em;
-}
-
 .header {
   font-size: 3em;
 }
 
-.branding {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.home-tagline {
+  text-align: center;
 }

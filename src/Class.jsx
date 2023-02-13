@@ -5,6 +5,7 @@ import { Button } from "@fluentui/react-components";
 import SettingInputField from "./SettingInputField";
 import SettingDropdown from "./SettingDropdown";
 import { useNavigate } from "react-router-dom";
+import LeftSideBar from "./LeftSideBar";
 
 const { CLASS: endpoint } = Endpoints;
 
@@ -78,7 +79,7 @@ const Class = () => {
   return (
     <div className="container">
       <h1 className="campaign-header">Class Campaign</h1>
-      <div className="settings-area">
+      <LeftSideBar>
         <SettingInputField
           label="Class Year"
           stateVariable={year}
@@ -144,7 +145,7 @@ const Class = () => {
             Go back to Home
           </Button>
         </div>
-      </div>
+      </LeftSideBar>
       <div className="editor-area">
         <textarea
           rows="25"

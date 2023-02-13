@@ -2,15 +2,9 @@
   overflow: hidden; /* clear float */
 }
 
-.settings-area,
 .donor-area {
   display: inline-block;
   vertical-align: top;
-}
-
-.settings-area {
-  float: left;
-  width: 30%;
 }
 
 .donor-area {
@@ -23,4 +17,8 @@
 
 .campaign-header {
   padding-bottom: 0.5em;
+}
+
+.instructions-area {
+  width: 15rem;
 }
