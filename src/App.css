@@ -3,4 +3,7 @@
   padding-right: 10%;
   padding-top: 3em;
   padding-bottom: 3em;
+  display: flex;
+
+  flex-direction: row;
 }

@@ -27,7 +27,7 @@ const MergeFields = () => {
       </LeftSidebar>
 
       <div className="spreadsheet-area">
-        <SpreadsheetViewer height="100%" width="100%" data={sheetData} />
+        <SpreadsheetViewer height="80%" width="100%" data={sheetData} />
       </div>
     </div>
   );

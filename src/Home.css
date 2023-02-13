@@ -1,17 +1,7 @@
-.container {
-  overflow: hidden; /* clear float */
-}
-
-.home-links-area {
-  float: left;
-  padding-top: 15rem;
-}
-
 .branding {
-  padding-top: 15rem;
-  padding-right: 5%;
-  padding-left: 5%;
   float: right;
+  padding-right: 10rem;
+  padding-top: 18%;
 }
 
 .link {
@@ -28,4 +18,8 @@ a:visited {
 
 .home-tagline {
   text-align: center;
+}
+
+.container {
+  width: 100%;
 }
