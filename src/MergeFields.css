@@ -2,4 +2,9 @@
   height: 50rem;
   max-width: 50rem;
   float: right;
+  padding-top: 5rem;
+}
+
+.uploader-area {
+  padding-right: 10rem;
 }

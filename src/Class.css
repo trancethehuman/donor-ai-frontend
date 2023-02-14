@@ -1,7 +1,3 @@
-.container {
-  overflow: hidden; /* clear float */
-}
-
 .settings-area,
 .editor-area {
   display: inline-block;
@@ -14,7 +10,8 @@
 
 .editor-area {
   float: right;
-  width: 60%;
+
+  padding-top: 5rem;
 }
 
 .generate-button {
@@ -24,6 +21,7 @@
 
 .editor {
   font-size: 1.3em;
+  width: 100%;
 }
 
 .campaign-header {

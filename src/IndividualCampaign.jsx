@@ -32,8 +32,15 @@ const IndividualCampaign = () => {
 
   return (
     <div className="container">
-      <h1 className="campaign-header">Individual Donors Campaign</h1>
       <LeftSidebar>
+        <h1>Individual Donors Campaign</h1>
+        <br></br>
+        <MenuNavButton
+          route="/"
+          label="Return to Home"
+          appearance="secondary"
+        />
+        <MenuNavButton isBackButton />
         <div className="instructions-area">
           <h2>Instructions</h2>
           <p>Set the general settings of an email down below.</p>
@@ -69,15 +76,6 @@ const IndividualCampaign = () => {
           options={MessageLengths}
           stateVariable={length}
           onChange={setLength}
-        />
-        <br></br>
-
-        <MenuNavButton isBackButton />
-
-        <MenuNavButton
-          route="/"
-          label="Return to Home"
-          appearance="secondary"
         />
       </LeftSidebar>
       <div className="donor-area">

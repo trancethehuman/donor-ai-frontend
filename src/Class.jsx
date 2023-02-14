@@ -79,8 +79,17 @@ const Class = () => {
 
   return (
     <div className="container">
-      <h1 className="campaign-header">Class Campaign</h1>
       <LeftSidebar>
+        <h1>Class Campaign</h1>
+        <br />
+        <MenuNavButton
+          label="Return to Home"
+          route="/"
+          appearance="secondary"
+        />
+        <MenuNavButton isBackButton />
+
+        <h2>General Settings</h2>
         <SettingInputField
           label="Class Year"
           stateVariable={year}
@@ -137,14 +146,6 @@ const Class = () => {
         </Button>
         <br></br>
         <br></br>
-
-        <MenuNavButton isBackButton />
-
-        <MenuNavButton
-          label="Return to Home"
-          route="/"
-          appearance="secondary"
-        />
       </LeftSidebar>
       <div className="editor-area">
         <textarea

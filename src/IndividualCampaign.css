@@ -1,5 +1,5 @@
 .container {
-  overflow: hidden; /* clear float */
+  height: 40rem;
 }
 
 .donor-area {
@@ -10,7 +10,7 @@
 .donor-area {
   width: 62%;
   float: right;
-  height: 45em;
+  height: 100%;
   overflow: scroll;
   overflow-x: hidden;
 }
