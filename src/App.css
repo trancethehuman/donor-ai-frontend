@@ -1,34 +1,16 @@
 .App {
-  padding-left: 2%;
-  padding-right: 2%;
-  padding-top: 1em;
-  padding-bottom: 1em;
   display: flex;
-
   flex-direction: row;
 }
 
-body {
-  background-color: #ffffff;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
+/* Patterned background */
+.background-pattern {
+  position: absolute;
   width: 100%;
   height: 100%;
-  opacity: 0.1;
-  background-image: linear-gradient(
-      #000000 0.6000000000000001px,
-      transparent 0.6000000000000001px
-    ),
-    linear-gradient(
-      to right,
-      #000000 0.6000000000000001px,
-      #ffffff 0.6000000000000001px
-    );
-  background-size: 12px 12px;
-  z-index: -1;
+  /* Change only from here down when getting new patterns */
+  background-color: #e5e5f7;
+  opacity: 0.2;
+  background-image: radial-gradient(#000000 0.5px, #e5e5f7 0.5px);
+  background-size: 10px 10px;
 }

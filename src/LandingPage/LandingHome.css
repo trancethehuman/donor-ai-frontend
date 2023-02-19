@@ -16,7 +16,10 @@
 
 .landing-home-tagline {
   font-size: 5.2rem;
-  line-height: 5rem;
+  line-height: 6rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin: 0;
 }
 
 .landing-home-subtitle {

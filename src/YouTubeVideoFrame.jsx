@@ -5,8 +5,6 @@ const YouTubeVideoFrame = ({ videoID }) => {
   return (
     <div className="video-iframe-container">
       <iframe
-        width="1280"
-        height="720"
         src={`https://www.youtube.com/embed/${videoID}`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -5,7 +5,7 @@ import MenuNavButton from "../MenuNavButton";
 
 const LandingHome = () => {
   return (
-    <>
+    <div>
       <NavBar />
       <div className="center-content-area">
         <div className="landing-home-tagline-area">
@@ -28,7 +28,7 @@ const LandingHome = () => {
           videoID={"HDjmDxb3Npo"}
         />
       </div>
-    </>
+    </div>
   );
 };
 

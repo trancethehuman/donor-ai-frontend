@@ -21,3 +21,8 @@ a.nav-bar-menu-item {
 a.nav-bar-menu-item:hover {
   text-decoration: underline;
 }
+
+.landing-navbar {
+  display: flex;
+  padding: 2rem;
+}

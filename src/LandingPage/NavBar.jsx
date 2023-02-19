@@ -7,7 +7,7 @@ const NavBar = () => {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div className="landing-navbar">
       <img src={logo} width="170" />
       <nav>
         <ul>
@@ -28,7 +28,7 @@ const NavBar = () => {
           </li>
         </ul>
       </nav>
-    </>
+    </div>
   );
 };
 
