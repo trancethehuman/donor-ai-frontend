@@ -7,12 +7,12 @@ import MergeFields from "./MergeFields";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Ghostwriter from "./Ghostwriter";
 import Help from "./Help";
-import About from "./About";
+import LandingHome from "./LandingPage/LandingHome";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <LandingHome />,
   },
   {
     path: "ghostwriter",
@@ -25,10 +25,6 @@ const router = createBrowserRouter([
   {
     path: "help",
     element: <Help />,
-  },
-  {
-    path: "about",
-    element: <About />,
   },
   {
     path: "class-campaign",

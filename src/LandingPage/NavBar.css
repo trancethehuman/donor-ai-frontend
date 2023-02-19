@@ -1,0 +1,24 @@
+nav {
+  height: 50px;
+  position: fixed;
+  right: 0;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+li {
+  padding-right: 3rem;
+}
+
+a.nav-bar-menu-item {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+a.nav-bar-menu-item:hover {
+  text-decoration: underline;
+}

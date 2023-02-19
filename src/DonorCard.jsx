@@ -6,10 +6,10 @@ import "./DonorCard.css";
 const { INDIVIDUAL_DONOR: endpoint } = Endpoints;
 
 const DonorCard = ({ donorData, messageSettings }) => {
-  const [generatedMessage, setGeneratedMessage] = useState(null);
+  const [generatedMessage, setGeneratedMessage] = useState();
   const [emptyEditor, setEmptyEditor] = useState(true);
-  const [loading, setLoading] = useState(null);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState();
+  const [error, setError] = useState();
   const editor = useRef();
 
   const onClickHandlerGenerateMessage = async () => {
@@ -69,7 +69,7 @@ const DonorCard = ({ donorData, messageSettings }) => {
         return generatedMessage?.choices[0].text;
       }
 
-      return `Something weird happened in my server. Please hit the Generate button again!`
+      return `Something weird happened in my server. Please hit the Generate button again!`;
     };
 
     editor.current.value = displayGeneratedMessage();

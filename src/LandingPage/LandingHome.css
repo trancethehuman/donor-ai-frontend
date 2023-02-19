@@ -1,0 +1,14 @@
+.landing-home-tagline {
+  font-size: 3rem;
+}
+
+.center-content-area {
+  position: fixed;
+  top: 20rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 3rem;
+}

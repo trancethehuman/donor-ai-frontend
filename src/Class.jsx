@@ -11,10 +11,10 @@ import MenuNavButton from "./MenuNavButton";
 const { CLASS: endpoint } = Endpoints;
 
 const Class = () => {
-  const [generatedMessage, setGeneratedMessage] = useState(null);
+  const [generatedMessage, setGeneratedMessage] = useState();
   const [emptyEditor, setEmptyEditor] = useState(true);
-  const [loading, setLoading] = useState(null);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState();
+  const [error, setError] = useState();
 
   const [year, setYear] = useState();
   const [lastDonation, setlLastDonation] = useState();
