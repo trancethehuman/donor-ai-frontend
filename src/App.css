@@ -7,3 +7,28 @@
 
   flex-direction: row;
 }
+
+body {
+  background-color: #ffffff;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  background-image: linear-gradient(
+      #000000 0.6000000000000001px,
+      transparent 0.6000000000000001px
+    ),
+    linear-gradient(
+      to right,
+      #000000 0.6000000000000001px,
+      #ffffff 0.6000000000000001px
+    );
+  background-size: 12px 12px;
+  z-index: -1;
+}
