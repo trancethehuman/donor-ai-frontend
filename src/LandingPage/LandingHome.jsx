@@ -1,5 +1,7 @@
 import NavBar from "./NavBar";
 import "./LandingHome.css";
+import YouTubeVideoFrame from "../YouTubeVideoFrame";
+import MenuNavButton from "../MenuNavButton";
 
 const LandingHome = () => {
   return (
@@ -8,9 +10,23 @@ const LandingHome = () => {
       <div className="center-content-area">
         <div className="landing-home-tagline-area">
           <p className="landing-home-tagline">
-            Add personal touches to email campaigns with AI
+            Add personal touches
+            <br />
+            to email campaigns
+          </p>
+          <p className="landing-home-subtitle">
+            Writed shockingly personal hooks in your messages,
+            <br />
+            no matter if you&apos;re writing to 100, 2000 or 500,000 people
           </p>
         </div>
+        <br />
+        <MenuNavButton label="Try Free Interactive Demo" />
+        <br />
+        <YouTubeVideoFrame
+          className="landing-home-video"
+          videoID={"HDjmDxb3Npo"}
+        />
       </div>
     </>
   );
