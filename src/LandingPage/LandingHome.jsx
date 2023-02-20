@@ -12,12 +12,12 @@ const LandingHome = () => {
           <p className="landing-home-tagline">
             Add personal touches
             <br />
-            to email campaigns
+            to your email campaigns
           </p>
           <p className="landing-home-subtitle">
-            Writed shockingly personal hooks in your messages,
+            Writed shockingly personal hooks in your email
             <br />
-            no matter if you&apos;re writing to 100, 2000 or 500,000 people
+            no matter when you&apos;re writing to 100, 2000 or 500,000 people
           </p>
         </div>
         <br />
