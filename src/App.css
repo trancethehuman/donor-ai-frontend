@@ -2,15 +2,3 @@
   display: flex;
   flex-direction: row;
 }
-
-/* Patterned background */
-.background-pattern {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  /* Change only from here down when getting new patterns */
-  background-color: #e5e5f7;
-  opacity: 0.2;
-  background-image: radial-gradient(#000000 0.5px, #e5e5f7 0.5px);
-  background-size: 10px 10px;
-}

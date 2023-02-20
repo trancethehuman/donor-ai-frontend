@@ -15,9 +15,9 @@ const LandingHome = () => {
             to your email campaigns
           </p>
           <p className="landing-home-subtitle">
-            Writed shockingly personal hooks in your email
+            Write shockingly personal emails
             <br />
-            no matter when you&apos;re writing to 100, 2000 or 500,000 people
+            no matter if you&apos;re writing to 100, 2000 or 500,000 people
           </p>
         </div>
         <br />

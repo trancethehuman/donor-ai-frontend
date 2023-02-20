@@ -16,6 +16,7 @@ a.nav-bar-menu-item {
   text-decoration: none;
   cursor: pointer;
   font-size: 1.3rem;
+  color: black;
 }
 
 a.nav-bar-menu-item:hover {
@@ -25,4 +26,8 @@ a.nav-bar-menu-item:hover {
 .landing-navbar {
   display: flex;
   padding: 2rem;
+}
+
+.landing-navbar-logo {
+  cursor: pointer;
 }
