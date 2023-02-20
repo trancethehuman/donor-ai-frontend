@@ -1,8 +1,25 @@
 import NavBar from "../NavBar";
 import "../LandingHome.css"; // This component actually uses CSS from the LandingHome.css
 import SpreadsheetViewer from "../../SpreadsheetViewer";
+import { useRef, useEffect } from "react";
+import thinkingEmoji from "../../images/thinking_emoji.png";
+import {
+  SampleBaseLetter,
+  SampleCustomerContacts,
+  TestDonorList,
+} from "../../consts";
+import "./Demo.css";
+import { stox } from "../../spreadsheetUtils";
+import { useSpreadsheetData } from "../../spreadsheetHooks";
 
 const Demo = () => {
+  const editor = useRef();
+  const data = useSpreadsheetData(SampleCustomerContacts, true);
+
+  useEffect(() => {
+    editor.current.value = SampleBaseLetter;
+  }, []);
+
   return (
     <div>
       <NavBar />
@@ -29,7 +46,64 @@ const Demo = () => {
           <br />
           <br />
           <br />
-          <SpreadsheetViewer height="40rem" width="100%" />
+          <SpreadsheetViewer
+            height="40rem"
+            width="100%"
+            options={{
+              showToolbar: false,
+            }}
+            data={data}
+          />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <p className="landing-home-subtitle">
+            You also have a template email written.
+          </p>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <textarea
+            rows="25"
+            cols="80"
+            className="landing-demo-editor"
+            ref={editor}
+          ></textarea>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <p className="landing-home-subtitle">
+            These two files both go into services like MailChimp,
+            <br />
+            which sends out generic emails to every single customer.
+            <br />
+            This is what most businesses do.
+          </p>
+          <br />
+          <br />
+          <br />
+          <br />
+          <p className="landing-home-subtitle">
+            But what if you can maximize your customer&apos;s data
+            <br />
+            and craft the best email possible?
+          </p>
+          <br />
+          <br />
+          <br />
+          <br />
+          <img src={thinkingEmoji} width="70" />
         </div>
         <br />
       </div>

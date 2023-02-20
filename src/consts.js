@@ -137,3 +137,91 @@ export const TestDonorList = [
     year: 2019,
   },
 ];
+
+export const SampleCustomerContacts = [
+  {
+    name: "John Doe",
+    street: "123 Main St",
+    city: "New York, NY",
+    last_product: "Pearl Ring Solid Silver",
+    total_spending: 500.0,
+  },
+  {
+    name: "Jane Smith",
+    street: "456 Elm St",
+    city: "Los Angeles, CA",
+    last_product: "Gold Skinny Minimalist Ring",
+    total_spending: 1000.0,
+  },
+  {
+    name: "Bob Johnson",
+    street: "789 Oak St",
+    city: "Chicago, IL",
+    last_product: "Peru Wood Bracelet",
+    total_spending: 1500.0,
+  },
+  {
+    name: "Samantha Lee",
+    street: "321 Maple Ave",
+    city: "Houston, TX",
+    last_product: "Gold Skinny Minimalist Ring",
+    total_spending: 2000.0,
+  },
+  {
+    name: "Mike Brown",
+    street: "654 Pine St",
+    city: "Phoenix, AZ",
+    last_product: "Pearl Ring Solid Silver",
+    total_spending: 2500.0,
+  },
+  {
+    name: "Emily Davis",
+    street: "987 Cedar Blvd",
+    city: "Philadelphia, PA",
+    last_product: "Gold Skinny Minimalist Ring",
+    total_spending: 3000.0,
+  },
+  {
+    name: "David Garcia",
+    street: "246 Birch St",
+    city: "San Antonio, TX",
+    last_product: "Peru Wood Bracelet",
+    total_spending: 3500.0,
+  },
+  {
+    name: "Rachel Martinez",
+    street: "135 Walnut Dr",
+    city: "San Diego, CA",
+    last_product: "Pearl Ring Solid Silver",
+    total_spending: 4000.0,
+  },
+  {
+    name: "William Lee",
+    street: "753 Elm St",
+    city: "Seattle, WA",
+    last_product: "Gold Skinny Minimalist Ring",
+    total_spending: 4500.0,
+  },
+  {
+    name: "Karen Kim",
+    street: "159 Maple Ave",
+    city: "Miami, FL",
+    last_product: "Peru Wood Bracelet",
+    total_spending: 5000.0,
+  },
+];
+
+export const SampleBaseLetter = `Subject: Exclusive Offer for Our Valued Customers!
+
+Dear *|NAME|*,
+
+We hope this email finds you well. As one of our valued customers, we wanted to offer you an exclusive discount on our latest collection of handcrafted jewelry.
+
+As a thank you for your loyalty, we are offering a special discount of 10% off your next purchase. 
+
+Simply use the code *|DISCOUNT_CODE|* at checkout to take advantage of this offer.
+
+Thank you for choosing Whimsy Wears as your go-to destination for all things jewelry.
+Best regards,
+
+Whimsy Wears`;

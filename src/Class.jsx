@@ -12,7 +12,7 @@ const { CLASS: endpoint } = Endpoints;
 
 const Class = () => {
   const [generatedMessage, setGeneratedMessage] = useState();
-  const [emptyEditor, setEmptyEditor] = useState(true);
+  const [isEditorEmpty, setIsEditorEmpty] = useState(true);
   const [loading, setLoading] = useState();
   const [error, setError] = useState();
 
@@ -23,8 +23,6 @@ const Class = () => {
   const [deadline, setDeadline] = useState();
   const [creativity, setCreativity] = useState();
   const [length, setLength] = useState();
-
-  const navigate = useNavigate();
 
   const editor = useRef();
 
@@ -42,7 +40,7 @@ const Class = () => {
     };
 
     try {
-      setEmptyEditor(false);
+      setIsEditorEmpty(false);
       setLoading(true);
       const result = await fetch(endpoint, {
         method: "POST",
@@ -60,7 +58,7 @@ const Class = () => {
 
   useEffect(() => {
     const displayGeneratedMessage = () => {
-      if (emptyEditor) {
+      if (isEditorEmpty) {
         return `Welcome to Denison's AI-Assisted Fundraising Ghostwriter!\n\nFill out the setting fields on the left, then hit "Generate" to see some magic.\n\n\n\n*Pro tip: you can actually edit this writing area! Go ahead and make edits after the AI gives you results to get the best solicitation letter.`;
       }
       if (loading) {
@@ -75,7 +73,7 @@ const Class = () => {
     };
 
     editor.current.value = displayGeneratedMessage();
-  }, [emptyEditor, error, generatedMessage, loading]);
+  }, [isEditorEmpty, error, generatedMessage, loading]);
 
   return (
     <div className="container">

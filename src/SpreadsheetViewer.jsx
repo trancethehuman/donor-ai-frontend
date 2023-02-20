@@ -1,6 +1,7 @@
 import Spreadsheet from "x-data-spreadsheet";
 import { useRef, useState, useEffect } from "react";
 
+// To find out which options can be passed in, go to https://github.com/myliang/x-spreadsheet#npm
 const SpreadsheetViewer = ({ data = {}, height, options, width }) => {
   const spreadsheetHTML = useRef();
   const sheetObject = useRef();

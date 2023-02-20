@@ -8,7 +8,7 @@ const YouTubeVideoFrame = ({ videoID }) => {
         src={`https://www.youtube.com/embed/${videoID}`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
+        allowFullScreen
         className="video-iframe"
       />
     </div>
