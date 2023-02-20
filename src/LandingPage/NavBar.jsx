@@ -8,7 +8,12 @@ const NavBar = () => {
 
   return (
     <div className="landing-navbar">
-      <img src={logo} width="170" />
+      <img
+        className="landing-navbar-logo"
+        src={logo}
+        width="170"
+        onClick={() => navigate("/")}
+      />
       <nav>
         <ul>
           <li>

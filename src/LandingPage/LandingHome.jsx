@@ -21,7 +21,7 @@ const LandingHome = () => {
           </p>
         </div>
         <br />
-        <MenuNavButton label="Try Free Interactive Demo" />
+        <MenuNavButton label="Try Free Interactive Demo" route="demo" />
         <br />
         <YouTubeVideoFrame
           className="landing-home-video"
