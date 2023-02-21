@@ -47,13 +47,21 @@ const Demo = () => {
           <br />
           <br />
           <SpreadsheetViewer
-            height="40rem"
-            width="100%"
+            height="25rem"
+            width="45rem"
             options={{
               showToolbar: false,
+              col: {
+                len: 6,
+              },
+              row: {
+                len: 13,
+              },
             }}
             data={data}
           />
+          <br />
+          <p>Feel free to modify this table to your liking!</p>
           <br />
           <br />
           <br />
@@ -71,7 +79,7 @@ const Demo = () => {
           <br />
           <textarea
             rows="25"
-            cols="80"
+            cols="60"
             className="landing-demo-editor"
             ref={editor}
           ></textarea>
