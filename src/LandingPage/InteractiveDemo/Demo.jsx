@@ -196,6 +196,21 @@ const Demo = () => {
         <br />
         <br />
         <br />
+        <SpreadsheetViewer
+          height="25rem"
+          width="45rem"
+          options={{
+            showToolbar: false,
+            col: {
+              len: 6,
+            },
+            row: {
+              len: 13,
+            },
+          }}
+          data={data}
+          getSheetDataOutTo={handleSpeadsheetData}
+        />
       </div>
     </div>
   );

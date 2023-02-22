@@ -1,6 +1,7 @@
 import Spreadsheet from "x-data-spreadsheet";
 import { useRef, useState, useEffect } from "react";
 import "./SpreadsheetViewer.css";
+import { getRandomLettersSequence } from "./LandingPage/utils";
 
 // To find out which options can be passed in, go to https://github.com/myliang/x-spreadsheet#npm
 const SpreadsheetViewer = ({
@@ -9,6 +10,7 @@ const SpreadsheetViewer = ({
   width,
   options,
   getSheetDataOutTo,
+  spreadsheetRandomId = getRandomLettersSequence(), // This needs to be random so the id of the spreadsheet div is unique for every instances of viewer
 }) => {
   const spreadsheetHTML = useRef();
   const sheetObject = useRef();
@@ -16,7 +18,7 @@ const SpreadsheetViewer = ({
 
   useEffect(() => {
     const element = spreadsheetHTML.current;
-    const sheet = new Spreadsheet("#x-spreadsheet", {
+    const sheet = new Spreadsheet("#" + spreadsheetRandomId, {
       view: {
         height: () => document.documentElement.clientHeight,
         width: () => document.documentElement.clientWidth,
@@ -51,7 +53,7 @@ const SpreadsheetViewer = ({
           width: width || "100%",
           overflow: "auto",
         }}
-        id="x-spreadsheet"
+        id={spreadsheetRandomId}
         ref={spreadsheetHTML}
       />
     </div>
