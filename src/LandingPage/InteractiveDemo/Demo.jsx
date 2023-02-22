@@ -2,7 +2,7 @@ import NavBar from "../NavBar";
 import "../LandingHome.css"; // This component actually uses CSS from the LandingHome.css
 import "./Demo.css";
 import SpreadsheetViewer from "../../SpreadsheetViewer";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import thinkingEmoji from "../../images/thinking_emoji.png";
 import {
   SampleBaseLetter,
@@ -17,9 +17,14 @@ import { getTags } from "../../mergeTagUtils";
 import { AllMergeTags } from "../../consts";
 
 const Demo = () => {
+  const [spreadsheetData, setSpreadsheetData] = useState();
   const firstEditor = useRef();
   const secondEditor = useRef();
   const data = useSpreadsheetData(SampleCustomerContacts, true);
+
+  const handleSpeadsheetData = (data) => {
+    setSpreadsheetData(data);
+  };
 
   const handleDemoOptionClick = (option) => {
     if (secondEditor.current) {
@@ -38,9 +43,13 @@ const Demo = () => {
 
   const handleGenerateButtonClick = (inputText) => {
     if (inputText) {
-      console.log(getTags(inputText, AllMergeTags));
+      getTags(inputText, AllMergeTags);
     }
   };
+
+  useEffect(() => {
+    console.log(spreadsheetData);
+  }, [spreadsheetData]);
 
   useEffect(() => {
     firstEditor.current.value = SampleBaseLetter;
@@ -85,6 +94,7 @@ const Demo = () => {
               },
             }}
             data={data}
+            getSheetDataOutTo={handleSpeadsheetData}
           />
           <br />
           <p>Feel free to modify this table!</p>

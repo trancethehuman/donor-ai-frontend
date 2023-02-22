@@ -3,7 +3,13 @@ import { useRef, useState, useEffect } from "react";
 import "./SpreadsheetViewer.css";
 
 // To find out which options can be passed in, go to https://github.com/myliang/x-spreadsheet#npm
-const SpreadsheetViewer = ({ data = {}, height, width, options }) => {
+const SpreadsheetViewer = ({
+  data = {},
+  height,
+  width,
+  options,
+  getSheetDataOutTo,
+}) => {
   const spreadsheetHTML = useRef();
   const sheetObject = useRef();
   const [uploadedSheetData, setUploadedSheetData] = useState(data);
@@ -16,9 +22,7 @@ const SpreadsheetViewer = ({ data = {}, height, width, options }) => {
         width: () => document.documentElement.clientWidth,
       },
       ...options,
-    })
-      .loadData(uploadedSheetData)
-      .change((data) => console.log(data));
+    }).loadData(uploadedSheetData);
 
     sheetObject.current = sheet;
 
@@ -31,9 +35,11 @@ const SpreadsheetViewer = ({ data = {}, height, width, options }) => {
     setUploadedSheetData(data);
   }, [data]);
 
+  // Pass the current data on the sheet out to parent component
   useEffect(() => {
     sheetObject.current.change(() => {
-      const newData = sheetObject.current.getData(); // ToDo: move this to export button
+      const newData = sheetObject.current.getData();
+      getSheetDataOutTo(newData);
     });
   });
 
