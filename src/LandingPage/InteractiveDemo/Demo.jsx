@@ -20,6 +20,7 @@ const Demo = () => {
   const [spreadsheetData, setSpreadsheetData] = useState();
   const firstEditor = useRef();
   const secondEditor = useRef();
+  const header = useRef();
   const data = useSpreadsheetData(SampleCustomerContacts, true);
 
   const handleSpeadsheetData = (data) => {
@@ -56,7 +57,7 @@ const Demo = () => {
   }, []);
 
   return (
-    <div>
+    <div className={"landing-page-demo-entire-area"}>
       <NavBar />
       <div className="center-content-area">
         <div className="landing-home-tagline-area">
@@ -81,21 +82,6 @@ const Demo = () => {
           <br />
           <br />
           <br />
-          <SpreadsheetViewer
-            height="25rem"
-            width="45rem"
-            options={{
-              showToolbar: false,
-              col: {
-                len: 6,
-              },
-              row: {
-                len: 13,
-              },
-            }}
-            data={data}
-            getSheetDataOutTo={handleSpeadsheetData}
-          />
           <br />
           <p>Feel free to modify this table!</p>
           <br />
@@ -182,35 +168,22 @@ const Demo = () => {
             ref={secondEditor}
             placeholder="Pick an option from above to see smart Merge Tags added to the base email."
           />
+          <br />
+          <br />
+          <Button
+            size="large"
+            appearance="primary"
+            onClick={() =>
+              handleGenerateButtonClick(secondEditor.current.value)
+            }
+          >
+            Generate AI Content!
+          </Button>
+          <br />
+          <br />
+          <br />
+          <br />
         </div>
-        <br />
-        <br />
-        <Button
-          size="large"
-          appearance="primary"
-          onClick={() => handleGenerateButtonClick(secondEditor.current.value)}
-        >
-          Generate AI Content!
-        </Button>
-        <br />
-        <br />
-        <br />
-        <br />
-        <SpreadsheetViewer
-          height="25rem"
-          width="45rem"
-          options={{
-            showToolbar: false,
-            col: {
-              len: 6,
-            },
-            row: {
-              len: 13,
-            },
-          }}
-          data={data}
-          getSheetDataOutTo={handleSpeadsheetData}
-        />
       </div>
     </div>
   );

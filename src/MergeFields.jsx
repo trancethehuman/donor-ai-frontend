@@ -45,9 +45,10 @@ const MergeFields = () => {
           {!file && <DragAndDropZone callback={fileUploadHandler} />}
         </div>
 
-        {file && (
-          <SpreadsheetViewer height="80%" width="100%" data={sheetData} />
-        )}
+        {file &&
+          {
+            /* <SpreadsheetViewer height="80%" width="100%" data={sheetData} /> */
+          }}
       </div>
     </div>
   );
