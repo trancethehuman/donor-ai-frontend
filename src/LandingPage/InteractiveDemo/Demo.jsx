@@ -1,23 +1,49 @@
 import NavBar from "../NavBar";
 import "../LandingHome.css"; // This component actually uses CSS from the LandingHome.css
+import "./Demo.css";
 import SpreadsheetViewer from "../../SpreadsheetViewer";
 import { useRef, useEffect } from "react";
 import thinkingEmoji from "../../images/thinking_emoji.png";
 import {
   SampleBaseLetter,
   SampleCustomerContacts,
-  TestDonorList,
+  SampleBaseLetterSmartOpener,
+  SampleBaseLetterSmartSubjectLine,
 } from "../../consts";
 import "./Demo.css";
-import { stox } from "../../spreadsheetUtils";
 import { useSpreadsheetData } from "../../spreadsheetHooks";
+import { Button } from "@fluentui/react-components";
+import { getTags } from "../../mergeTagUtils";
+import { AllMergeTags } from "../../consts";
 
 const Demo = () => {
-  const editor = useRef();
+  const firstEditor = useRef();
+  const secondEditor = useRef();
   const data = useSpreadsheetData(SampleCustomerContacts, true);
 
+  const handleDemoOptionClick = (option) => {
+    if (secondEditor.current) {
+      switch (option) {
+        case "opener":
+          secondEditor.current.value = SampleBaseLetterSmartOpener;
+          break;
+        case "subject_line":
+          secondEditor.current.value = SampleBaseLetterSmartSubjectLine;
+          break;
+        default:
+          secondEditor.current.value = SampleBaseLetterSmartOpener;
+      }
+    }
+  };
+
+  const handleGenerateButtonClick = (inputText) => {
+    if (inputText) {
+      console.log(getTags(inputText, AllMergeTags));
+    }
+  };
+
   useEffect(() => {
-    editor.current.value = SampleBaseLetter;
+    firstEditor.current.value = SampleBaseLetter;
   }, []);
 
   return (
@@ -61,7 +87,7 @@ const Demo = () => {
             data={data}
           />
           <br />
-          <p>Feel free to modify this table to your liking!</p>
+          <p>Feel free to modify this table!</p>
           <br />
           <br />
           <br />
@@ -81,7 +107,7 @@ const Demo = () => {
             rows="25"
             cols="60"
             className="landing-demo-editor"
-            ref={editor}
+            ref={firstEditor}
           ></textarea>
           <br />
           <br />
@@ -92,9 +118,7 @@ const Demo = () => {
           <br />
           <br />
           <p className="landing-home-subtitle">
-            These two files both go into services like MailChimp,
-            <br />
-            which sends out generic emails to every single customer.
+            These two files both go into MailChimp or some other services.
             <br />
             This is what most businesses do.
           </p>
@@ -102,17 +126,65 @@ const Demo = () => {
           <br />
           <br />
           <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
           <p className="landing-home-subtitle">
             But what if you can maximize your customer&apos;s data
             <br />
-            and craft the best email possible?
+            and write the best email possible?
           </p>
           <br />
           <br />
           <br />
-          <br />
           <img src={thinkingEmoji} width="70" />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <p className="landing-home-subtitle">Pick one of these options:</p>
+          <div className="landing-demo-smart-option-area">
+            <div className="landing-demo-smart-option">
+              <Button
+                size="large"
+                onClick={() => handleDemoOptionClick("opener")}
+              >
+                Clever Opener
+              </Button>
+            </div>
+            <div className="landing-demo-smart-option">
+              <Button
+                size="large"
+                onClick={() => handleDemoOptionClick("subject_line")}
+              >
+                Smart Subject Line
+              </Button>
+            </div>
+          </div>
+          <br />
+          <textarea
+            rows="25"
+            cols="60"
+            className="landing-demo-editor"
+            ref={secondEditor}
+            placeholder="Pick an option from above to see smart Merge Tags added to the base email."
+          />
         </div>
+        <br />
+        <br />
+        <Button
+          size="large"
+          appearance="primary"
+          onClick={() => handleGenerateButtonClick(secondEditor.current.value)}
+        >
+          Generate AI Content!
+        </Button>
+        <br />
+        <br />
+        <br />
         <br />
       </div>
     </div>

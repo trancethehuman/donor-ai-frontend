@@ -3,6 +3,12 @@ export const Endpoints = {
   INDIVIDUAL_DONOR: import.meta.env.VITE_INDIVIDUAL_DONOR_ENDPOINT,
 };
 
+// TODO: Build a database of merge tags instead of hardcoding them like this
+export const AllMergeTags = {
+  location_opener: "*|EMAIL_BLEND_LOCATION_OPENER|*",
+  subject_line_last_purchase: "*|EMAIL_BLEND_LAST_PURCHASE_SUBJECT_LINE|*",
+};
+
 export const CreativityLevels = [
   { label: "More Direct", id: 1, value: 0.5 },
   { label: "Normal", id: 2, value: 1 },
@@ -212,6 +218,36 @@ export const SampleCustomerContacts = [
 ];
 
 export const SampleBaseLetter = `Subject: Exclusive Offer for Our Valued Customers!
+
+Dear *|NAME|*,
+
+We hope this email finds you well. As one of our valued customers, we wanted to offer you an exclusive discount on our latest collection of handcrafted jewelry.
+
+As a thank you for your loyalty, we are offering a special discount of 10% off your next purchase. 
+
+Simply use the code *|DISCOUNT_CODE|* at checkout to take advantage of this offer.
+
+Thank you for choosing Whimsy Wears as your go-to destination for all things jewelry.
+Best regards,
+
+Whimsy Wears`;
+
+export const SampleBaseLetterSmartOpener = `Subject: Exclusive Offer for Our Valued Customers!
+
+Dear *|NAME|*,
+
+${AllMergeTags.location_opener}
+
+As a thank you for your loyalty, we are offering a special discount of 10% off your next purchase. 
+
+Simply use the code *|DISCOUNT_CODE|* at checkout to take advantage of this offer.
+
+Thank you for choosing Whimsy Wears as your go-to destination for all things jewelry.
+Best regards,
+
+Whimsy Wears`;
+
+export const SampleBaseLetterSmartSubjectLine = `Subject: ${AllMergeTags.subject_line_last_purchase}
 
 Dear *|NAME|*,
 

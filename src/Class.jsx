@@ -146,12 +146,7 @@ const Class = () => {
         <br></br>
       </LeftSidebar>
       <div className="editor-area">
-        <textarea
-          rows="25"
-          cols="42"
-          ref={editor}
-          className="editor"
-        ></textarea>
+        <textarea rows="25" cols="42" ref={editor} className="editor" />
       </div>
     </div>
   );

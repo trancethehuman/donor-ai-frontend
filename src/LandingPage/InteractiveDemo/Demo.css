@@ -2,3 +2,14 @@
   font-size: 1.4em;
   width: 100%;
 }
+
+.landing-demo-smart-option {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.landing-demo-smart-option-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
