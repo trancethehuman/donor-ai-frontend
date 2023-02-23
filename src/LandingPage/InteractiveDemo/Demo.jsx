@@ -20,12 +20,6 @@ const Demo = () => {
   const [spreadsheetData, setSpreadsheetData] = useState();
   const firstEditor = useRef();
   const secondEditor = useRef();
-  const header = useRef();
-  const data = useSpreadsheetData(SampleCustomerContacts, true);
-
-  const handleSpeadsheetData = (data) => {
-    setSpreadsheetData(data);
-  };
 
   const handleDemoOptionClick = (option) => {
     if (secondEditor.current) {
@@ -83,7 +77,11 @@ const Demo = () => {
         <br />
         <br />
         <div className="demo-page-data-grid-area landing-demo-center">
-          <DataGridWrapper data={SampleCustomerContacts} editable />
+          <DataGridWrapper
+            data={SampleCustomerContacts}
+            editable
+            getCurrentDataCallback={(data) => setSpreadsheetData(data)}
+          />
         </div>
         <p className="landing-home-text">Feel free to modify this table!</p>
         <br />
