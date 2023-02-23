@@ -83,7 +83,7 @@ const Demo = () => {
         <br />
         <br />
         <div className="demo-page-data-grid-area landing-demo-center">
-          <DataGridWrapper data={SampleCustomerContacts} />
+          <DataGridWrapper data={SampleCustomerContacts} editable />
         </div>
         <p className="landing-home-text">Feel free to modify this table!</p>
         <br />
@@ -189,8 +189,16 @@ const Demo = () => {
             Generate AI Content!
           </Button>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <div className="demo-page-data-grid-area landing-demo-center">
-          <DataGridWrapper data={SampleCustomerContacts} editable={true} />
+          <DataGridWrapper data={SampleCustomerContacts} editable />
         </div>
         <br />
         <br />

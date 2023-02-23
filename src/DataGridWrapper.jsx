@@ -7,11 +7,7 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 const DataGridWrapper = ({ data, width, height, editable = false }) => {
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState();
-  const defaultColDef = useMemo(() => {
-    return {
-      editable: editable,
-    };
-  }, [editable]);
+  const [defaultColDef, setDefaultColDef] = useState();
 
   useEffect(() => {
     setRowData(data);
@@ -20,7 +16,10 @@ const DataGridWrapper = ({ data, width, height, editable = false }) => {
         return { field: key };
       })
     );
-  }, [data]);
+    setDefaultColDef({
+      editable: editable,
+    });
+  }, [data, editable]);
 
   return (
     <div>
