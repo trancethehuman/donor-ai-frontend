@@ -65,7 +65,7 @@ export const getColumnHeadersByTagKeys = (
     .filter((entry) => entry.name === AllTagReferences[tagKey].name)
     .map((entry) => entry.column_headers);
 
-  return headers.flat();
+  return headers.flat()[0];
 };
 
 /**

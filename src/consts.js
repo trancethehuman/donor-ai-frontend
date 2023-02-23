@@ -11,7 +11,11 @@ export const AllTagReferences = {
   },
   subject_last_purchase: {
     name: "LAST_PURCHASE_SUBJECT_LINE",
-    column_headers: { purchase_name: null, date: null, purchase_purpose: null },
+    column_headers: {
+      purchase_names: null,
+      date: null,
+      purchase_purpose: null,
+    },
   },
 };
 
@@ -260,3 +264,18 @@ Simply use the code *|DISCOUNT_CODE|* at checkout to take advantage of this offe
 Thank you for choosing Whimsy Wears as your go-to destination for all things jewelry.
 
 Whimsy Wears`;
+
+export const sampleDataChosenColumnHeaders = [
+  {
+    name: AllTagReferences.body_location_opener.name,
+    column_headers: { locations: ["street", "city"] },
+  },
+  {
+    name: AllTagReferences.subject_last_purchase.name,
+    column_headers: {
+      purchase_names: ["last_product"],
+      date: null,
+      purchase_purpose: null,
+    },
+  },
+];

@@ -1,3 +1,7 @@
+/**
+ * It returns a string of 9 random letters from the alphabet.
+ * @returns A string of 9 random letters.
+ */
 export const getRandomLettersSequence = () => {
   let letters = "abcdefghijklmnopqrstuvwxyz";
   let result = "";

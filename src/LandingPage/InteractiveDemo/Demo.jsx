@@ -15,23 +15,8 @@ import {
   getTagKeysFromString,
   getTagKeysAndChosenColumnHeaders,
 } from "../../mergeTagUtils";
-import { AllTagReferences } from "../../consts";
+import { AllTagReferences, sampleDataChosenColumnHeaders } from "../../consts";
 import DataGridWrapper from "../../DataGridWrapper";
-
-const sampleDataChosenColumnHeaders = [
-  {
-    name: AllTagReferences.body_location_opener.name,
-    column_headers: { locations: ["street", "city"] },
-  },
-  {
-    name: AllTagReferences.subject_last_purchase.name,
-    column_headers: {
-      purchase_name: ["last_product"],
-      date: null,
-      purchase_purpose: null,
-    },
-  },
-];
 
 const Demo = () => {
   const [spreadsheetData, setSpreadsheetData] = useState();
