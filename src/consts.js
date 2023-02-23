@@ -221,14 +221,13 @@ export const SampleBaseLetter = `Subject: Exclusive Offer for Our Valued Custome
 
 Dear *|NAME|*,
 
-We hope this email finds you well. As one of our valued customers, we wanted to offer you an exclusive discount on our latest collection of handcrafted jewelry.
+We hope this email finds you well.
 
 As a thank you for your loyalty, we are offering a special discount of 10% off your next purchase. 
 
 Simply use the code *|DISCOUNT_CODE|* at checkout to take advantage of this offer.
 
 Thank you for choosing Whimsy Wears as your go-to destination for all things jewelry.
-Best regards,
 
 Whimsy Wears`;
 

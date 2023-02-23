@@ -85,7 +85,6 @@ const Demo = () => {
         <div className="demo-page-data-grid-area landing-demo-center">
           <DataGridWrapper data={SampleCustomerContacts} />
         </div>
-
         <p className="landing-home-text">Feel free to modify this table!</p>
         <br />
         <br />
@@ -190,7 +189,9 @@ const Demo = () => {
             Generate AI Content!
           </Button>
         </div>
-
+        <div className="demo-page-data-grid-area landing-demo-center">
+          <DataGridWrapper data={SampleCustomerContacts} editable={true} />
+        </div>
         <br />
         <br />
         <br />
