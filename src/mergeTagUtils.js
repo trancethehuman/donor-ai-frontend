@@ -5,7 +5,7 @@
  * @param availableMergeTags - {
  * @returns An array of merge tags that are found in the input string.
  */
-export const getMergeTags = (inputString, availableMergeTags) => {
+export const getTagNamesFromString = (inputString, availableMergeTags) => {
   const mergeTags = [];
   const tags = Object.values(availableMergeTags).map((tag) => tag.name);
   for (let i = 0; i < inputString.length; i++) {
@@ -44,7 +44,7 @@ export const getTagKeysFromTagNames = (mergeTagValues, availableMergeTags) => {
  * @returns An array of objects.
  */
 export const getTagKeysFromString = (inputString, availableMergeTags) => {
-  const tagNames = getMergeTags(inputString, availableMergeTags);
+  const tagNames = getTagNamesFromString(inputString, availableMergeTags);
   return getTagKeysFromTagNames(tagNames, availableMergeTags);
 };
 
@@ -64,7 +64,18 @@ export const getColumnHeadersByTag = (columnHeadersAndTagNames, tagName) => {
   return headers.flat();
 };
 
-export const getTagKeysAndChosenColumns = (tagKeys, chosenColumnHeaders) => {
+/**
+ * It takes an array of tag keys and an array of column headers and returns an array of objects with
+ * the tag key and the column headers that match that tag key
+ * @param tagKeys - ["tag1", "tag2", "tag3"]
+ * @param chosenColumnHeaders - [{tag: 'tag1', column_headers: ['column1', 'column2']}, {tag: 'tag2',
+ * column_headers: ['column3', 'column4']}]
+ * @returns An array of objects.
+ */
+export const getTagKeysAndChosenColumnHeaders = (
+  tagKeys,
+  chosenColumnHeaders
+) => {
   const result = tagKeys.map((tagKey) => {
     return {
       tag: tagKey,

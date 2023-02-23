@@ -13,7 +13,7 @@ import "./Demo.css";
 import { Button } from "@fluentui/react-components";
 import {
   getTagKeysFromString,
-  getTagKeysAndChosenColumns,
+  getTagKeysAndChosenColumnHeaders,
 } from "../../mergeTagUtils";
 import { AllTags } from "../../consts";
 import DataGridWrapper from "../../DataGridWrapper";
@@ -56,7 +56,7 @@ const Demo = () => {
   const handleGenerateButtonClick = (inputText) => {
     if (inputText) {
       const tagKeys = getTagKeysFromString(inputText, AllTags);
-      const tagKeysAndColumns = getTagKeysAndChosenColumns(
+      const tagKeysAndColumns = getTagKeysAndChosenColumnHeaders(
         tagKeys,
         demoChosenColumnHeaders
       );
