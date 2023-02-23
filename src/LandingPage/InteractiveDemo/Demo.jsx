@@ -15,16 +15,16 @@ import {
   getTagKeysFromString,
   getTagKeysAndChosenColumnHeaders,
 } from "../../mergeTagUtils";
-import { AllTags } from "../../consts";
+import { AllTagReferences } from "../../consts";
 import DataGridWrapper from "../../DataGridWrapper";
 
-const demoChosenColumnHeaders = [
+const sampleDataChosenColumnHeaders = [
   {
-    tag: "location_opener",
+    name: AllTagReferences.body_location_opener.name,
     column_headers: { locations: ["street", "city"] },
   },
   {
-    tag: "subject_line_last_purchase",
+    name: AllTagReferences.subject_last_purchase.name,
     column_headers: {
       purchase_name: ["last_product"],
       date: null,
@@ -55,18 +55,15 @@ const Demo = () => {
 
   const handleGenerateButtonClick = (inputText) => {
     if (inputText) {
-      const tagKeys = getTagKeysFromString(inputText, AllTags);
+      const tagKeys = getTagKeysFromString(inputText, AllTagReferences);
       const tagKeysAndColumns = getTagKeysAndChosenColumnHeaders(
         tagKeys,
-        demoChosenColumnHeaders
+        sampleDataChosenColumnHeaders,
+        AllTagReferences
       );
       console.log(tagKeysAndColumns);
     }
   };
-
-  useEffect(() => {
-    console.log(spreadsheetData);
-  }, [spreadsheetData]);
 
   useEffect(() => {
     firstEditor.current.value = SampleBaseLetter;
@@ -123,7 +120,7 @@ const Demo = () => {
         <br />
         <div className="landing-demo-center">
           <textarea
-            rows="25"
+            rows="15"
             cols="60"
             className="landing-demo-editor"
             ref={firstEditor}
@@ -189,7 +186,7 @@ const Demo = () => {
         <br />
         <div className="landing-demo-center">
           <textarea
-            rows="25"
+            rows="18"
             cols="60"
             className="landing-demo-editor"
             ref={secondEditor}

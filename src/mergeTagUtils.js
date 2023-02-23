@@ -56,9 +56,13 @@ export const getTagKeysFromString = (inputString, availableMergeTags) => {
  * @param tagName - "tag1"
  * @returns An array of column headers.
  */
-export const getColumnHeadersByTag = (columnHeadersAndTagNames, tagName) => {
+export const getColumnHeadersByTagKeys = (
+  columnHeadersAndTagNames,
+  tagKey,
+  AllTagReferences
+) => {
   const headers = columnHeadersAndTagNames
-    .filter((entry) => entry.tag === tagName)
+    .filter((entry) => entry.name === AllTagReferences[tagKey].name)
     .map((entry) => entry.column_headers);
 
   return headers.flat();
@@ -74,12 +78,17 @@ export const getColumnHeadersByTag = (columnHeadersAndTagNames, tagName) => {
  */
 export const getTagKeysAndChosenColumnHeaders = (
   tagKeys,
-  chosenColumnHeaders
+  chosenColumnHeaders,
+  AllTagReferences
 ) => {
   const result = tagKeys.map((tagKey) => {
     return {
       tag: tagKey,
-      column_headers: getColumnHeadersByTag(chosenColumnHeaders, tagKey),
+      column_headers: getColumnHeadersByTagKeys(
+        chosenColumnHeaders,
+        tagKey,
+        AllTagReferences
+      ),
     };
   });
 

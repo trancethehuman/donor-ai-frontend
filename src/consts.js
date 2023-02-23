@@ -4,13 +4,13 @@ export const Endpoints = {
 };
 
 // TODO: Build a database of merge tags instead of hardcoding them like this
-export const AllTags = {
-  location_opener: {
-    name: "*|EMAIL_BLEND_LOCATION_OPENER|*",
+export const AllTagReferences = {
+  body_location_opener: {
+    name: "LOCATION_OPENER",
     column_headers: { locations: [] },
   },
-  subject_line_last_purchase: {
-    name: "*|EMAIL_BLEND_LAST_PURCHASE_SUBJECT_LINE|*",
+  subject_last_purchase: {
+    name: "LAST_PURCHASE_SUBJECT_LINE",
     column_headers: { purchase_name: null, date: null, purchase_purpose: null },
   },
 };
@@ -229,9 +229,7 @@ Dear *|NAME|*,
 
 We hope this email finds you well.
 
-As a thank you for your loyalty, we are offering a special discount of 10% off your next purchase. 
-
-Simply use the code *|DISCOUNT_CODE|* at checkout to take advantage of this offer.
+As a thank you for your loyalty, we are offering a special discount of 10% off your next purchase.
 
 Thank you for choosing Whimsy Wears as your go-to destination for all things jewelry.
 
@@ -241,7 +239,7 @@ export const SampleBaseLetterSmartOpener = `Subject: Exclusive Offer for Our Val
 
 Dear *|NAME|*,
 
-${AllTags.location_opener.name}
+*|${AllTagReferences.body_location_opener.name}|*
 
 As a thank you for your loyalty, we are offering a special discount of 10% off your next purchase. 
 
@@ -251,7 +249,7 @@ Thank you for choosing Whimsy Wears as your go-to destination for all things jew
 
 Whimsy Wears`;
 
-export const SampleBaseLetterSmartSubjectLine = `Subject: ${AllTags.subject_line_last_purchase.name}
+export const SampleBaseLetterSmartSubjectLine = `Subject: *|${AllTagReferences.subject_last_purchase.name}|*
 
 Dear *|NAME|*,
 
