@@ -18,7 +18,7 @@ const DataGridWrapper = ({
   const gridRef = useRef();
 
   useEffect(() => {
-    // These two only keeps track of displaying current data on the grid
+    // These two only helps the grid display data, not keeping track of up-to-date data.
     setRowData(data);
     setColumnDefs(
       Object.keys(data[0]).map((key) => {
@@ -30,6 +30,7 @@ const DataGridWrapper = ({
       editable: editable,
     });
 
+    // This actually exposes the grid data out (including edits)
     if (getCurrentDataCallback) {
       getCurrentDataCallback(rowData);
     }

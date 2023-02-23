@@ -10,11 +10,28 @@ import {
   SampleBaseLetterSmartSubjectLine,
 } from "../../consts";
 import "./Demo.css";
-import { useSpreadsheetData } from "../../spreadsheetHooks";
 import { Button } from "@fluentui/react-components";
-import { getTags } from "../../mergeTagUtils";
-import { AllMergeTags } from "../../consts";
+import {
+  getTagKeysFromString,
+  getTagKeysAndChosenColumns,
+} from "../../mergeTagUtils";
+import { AllTags } from "../../consts";
 import DataGridWrapper from "../../DataGridWrapper";
+
+const demoChosenColumnHeaders = [
+  {
+    tag: "location_opener",
+    column_headers: { locations: ["street", "city"] },
+  },
+  {
+    tag: "subject_line_last_purchase",
+    column_headers: {
+      purchase_name: ["last_product"],
+      date: null,
+      purchase_purpose: null,
+    },
+  },
+];
 
 const Demo = () => {
   const [spreadsheetData, setSpreadsheetData] = useState();
@@ -38,7 +55,12 @@ const Demo = () => {
 
   const handleGenerateButtonClick = (inputText) => {
     if (inputText) {
-      getTags(inputText, AllMergeTags);
+      const tagKeys = getTagKeysFromString(inputText, AllTags);
+      const tagKeysAndColumns = getTagKeysAndChosenColumns(
+        tagKeys,
+        demoChosenColumnHeaders
+      );
+      console.log(tagKeysAndColumns);
     }
   };
 

@@ -4,9 +4,15 @@ export const Endpoints = {
 };
 
 // TODO: Build a database of merge tags instead of hardcoding them like this
-export const AllMergeTags = {
-  location_opener: "*|EMAIL_BLEND_LOCATION_OPENER|*",
-  subject_line_last_purchase: "*|EMAIL_BLEND_LAST_PURCHASE_SUBJECT_LINE|*",
+export const AllTags = {
+  location_opener: {
+    name: "*|EMAIL_BLEND_LOCATION_OPENER|*",
+    column_headers: { locations: [] },
+  },
+  subject_line_last_purchase: {
+    name: "*|EMAIL_BLEND_LAST_PURCHASE_SUBJECT_LINE|*",
+    column_headers: { purchase_name: null, date: null, purchase_purpose: null },
+  },
 };
 
 export const CreativityLevels = [
@@ -235,7 +241,7 @@ export const SampleBaseLetterSmartOpener = `Subject: Exclusive Offer for Our Val
 
 Dear *|NAME|*,
 
-${AllMergeTags.location_opener}
+${AllTags.location_opener.name}
 
 As a thank you for your loyalty, we are offering a special discount of 10% off your next purchase. 
 
@@ -245,7 +251,7 @@ Thank you for choosing Whimsy Wears as your go-to destination for all things jew
 
 Whimsy Wears`;
 
-export const SampleBaseLetterSmartSubjectLine = `Subject: ${AllMergeTags.subject_line_last_purchase}
+export const SampleBaseLetterSmartSubjectLine = `Subject: ${AllTags.subject_line_last_purchase.name}
 
 Dear *|NAME|*,
 

@@ -7,43 +7,17 @@
  */
 export const getMergeTags = (inputString, availableMergeTags) => {
   const mergeTags = [];
-  let index = 0;
-
-  while (index < inputString.length) {
-    // Find the next occurrence of the merge tag opener
-    const openerStartIndex = inputString.indexOf("*|", index);
-
-    // If no more merge tags are found, break out of the loop
-    if (openerStartIndex === -1) {
-      break;
+  const tags = Object.values(availableMergeTags).map((tag) => tag.name);
+  for (let i = 0; i < inputString.length; i++) {
+    for (let j = 0; j < tags.length; j++) {
+      if (inputString.substring(i, i + tags[j].length) === tags[j]) {
+        mergeTags.push(tags[j]);
+        i += tags[j].length - 1;
+        break;
+      }
     }
-
-    const openerEndIndex = openerStartIndex + 2;
-
-    // Find the corresponding merge tag closer
-    const closerStartIndex = openerEndIndex;
-    const closerEndIndex = inputString.indexOf("|*", closerStartIndex);
-
-    // If no matching closer is found, break out of the loop
-    if (closerEndIndex === -1) {
-      break;
-    }
-
-    // Extract the merge tag and add it to the array
-    const mergeTag = inputString.slice(openerStartIndex, closerEndIndex + 2);
-    mergeTags.push(mergeTag);
-
-    // Move the index to the end of the current merge tag
-    index = closerEndIndex + 2;
   }
-
-  // Filter out any merge tags that are not available
-  const availableMergeTagValues = Object.values(availableMergeTags);
-  const validMergeTags = mergeTags.filter((tag) =>
-    availableMergeTagValues.includes(tag)
-  );
-
-  return validMergeTags;
+  return mergeTags;
 };
 
 /**
@@ -53,17 +27,14 @@ export const getMergeTags = (inputString, availableMergeTags) => {
  * @param availableMergeTags
  * @returns An array of keys from the official hash table of merge tags.
  */
-export const getMergeTagKeysFromTagNames = (
-  mergeTagValues,
-  availableMergeTags
-) => {
-  const mergeTagKeys = [];
+export const getTagKeysFromTagNames = (mergeTagValues, availableMergeTags) => {
+  const foundKeys = [];
   for (const [key, value] of Object.entries(availableMergeTags)) {
-    if (mergeTagValues.includes(value)) {
-      mergeTagKeys.push(key);
+    if (mergeTagValues.includes(value.name)) {
+      foundKeys.push(key);
     }
   }
-  return mergeTagKeys;
+  return foundKeys;
 };
 
 /**
@@ -72,7 +43,34 @@ export const getMergeTagKeysFromTagNames = (
  * @param availableMergeTags -
  * @returns An array of objects.
  */
-export const getTags = (inputString, availableMergeTags) => {
+export const getTagKeysFromString = (inputString, availableMergeTags) => {
   const tagNames = getMergeTags(inputString, availableMergeTags);
-  return getMergeTagKeysFromTagNames(tagNames, availableMergeTags);
+  return getTagKeysFromTagNames(tagNames, availableMergeTags);
+};
+
+/**
+ * It takes an array of objects, each object having a tag and column_headers property, and returns an
+ * array of column_headers that match the tagName passed in
+ * @param columnHeadersAndTagNames - [{tag: "tag1", column_headers: ["header1", "header2"]}, {tag:
+ * "tag2", column_headers: ["header3", "header4"]}]
+ * @param tagName - "tag1"
+ * @returns An array of column headers.
+ */
+export const getColumnHeadersByTag = (columnHeadersAndTagNames, tagName) => {
+  const headers = columnHeadersAndTagNames
+    .filter((entry) => entry.tag === tagName)
+    .map((entry) => entry.column_headers);
+
+  return headers.flat();
+};
+
+export const getTagKeysAndChosenColumns = (tagKeys, chosenColumnHeaders) => {
+  const result = tagKeys.map((tagKey) => {
+    return {
+      tag: tagKey,
+      column_headers: getColumnHeadersByTag(chosenColumnHeaders, tagKey),
+    };
+  });
+
+  return result;
 };
