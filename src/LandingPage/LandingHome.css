@@ -1,17 +1,12 @@
-.center-content-area {
-  position: absolute;
-  top: 7rem;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
 .landing-home-tagline-area {
   text-align: center;
   max-width: 60rem;
+}
+
+.landing-home-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .landing-home-tagline {
@@ -20,14 +15,24 @@
   padding-top: 3rem;
   padding-bottom: 3rem;
   margin: 0;
+  text-align: center;
 }
 
 .landing-home-subtitle {
   font-size: 1.5rem;
   line-height: 2.5rem;
   font-weight: 400;
+  text-align: center;
+}
+
+.landing-home-text {
+  text-align: center;
 }
 
 .landing-home-video {
-  width: 60%;
+  width: 70%;
+}
+
+.landing-home-center-button {
+  text-align: center;
 }

@@ -1,6 +1,15 @@
+.landing-home-center-content-area {
+  padding-top: 5rem;
+}
+
 .landing-demo-editor {
   font-size: 1.4em;
-  width: 100%;
+}
+
+.landing-demo-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .landing-demo-smart-option {
@@ -8,8 +17,6 @@
   padding-right: 2rem;
 }
 
-.landing-demo-smart-option-area {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.demo-page-data-grid-area {
+  overflow-x: hidden;
 }

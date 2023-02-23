@@ -29,5 +29,6 @@ a.nav-bar-menu-item:hover {
 }
 
 .landing-navbar-logo {
+  position: absolute;
   cursor: pointer;
 }

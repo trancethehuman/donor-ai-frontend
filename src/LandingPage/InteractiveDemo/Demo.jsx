@@ -1,7 +1,6 @@
 import NavBar from "../NavBar";
 import "../LandingHome.css"; // This component actually uses CSS from the LandingHome.css
 import "./Demo.css";
-import SpreadsheetViewer from "../../SpreadsheetViewer";
 import { useRef, useEffect, useState } from "react";
 import thinkingEmoji from "../../images/thinking_emoji.png";
 import {
@@ -15,6 +14,7 @@ import { useSpreadsheetData } from "../../spreadsheetHooks";
 import { Button } from "@fluentui/react-components";
 import { getTags } from "../../mergeTagUtils";
 import { AllMergeTags } from "../../consts";
+import DataGridWrapper from "../../DataGridWrapper";
 
 const Demo = () => {
   const [spreadsheetData, setSpreadsheetData] = useState();
@@ -57,110 +57,118 @@ const Demo = () => {
   }, []);
 
   return (
-    <div className={"landing-page-demo-entire-area"}>
+    <div>
       <NavBar />
-      <div className="center-content-area">
-        <div className="landing-home-tagline-area">
-          <p className="landing-home-tagline">Interactive Demo</p>
+      <div className="landing-home-center-content-area">
+        <p className="landing-home-tagline">Interactive Demo</p>
+        <br />
+        <br />
+        <p className="landing-home-subtitle">
+          You&apos;re an e-commerce jewelry shop
           <br />
+          called Whimsy Wears 💎
+        </p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <p className="landing-home-subtitle">
+          You have 10 customers and you want to send each
           <br />
-          <p className="landing-home-subtitle">
-            You&apos;re an e-commerce jewelry shop
-            <br />
-            called Whimsy Wears 💎
-          </p>
-          <br />
-          <br />
-          <br />
-          <br />
-          <p className="landing-home-subtitle">
-            You have 10 customers and you want to send each
-            <br />
-            an email about a new product
-          </p>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <p>Feel free to modify this table!</p>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <p className="landing-home-subtitle">
-            You also have a template email written.
-          </p>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+          an email about a new product
+        </p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div className="demo-page-data-grid-area landing-demo-center">
+          <DataGridWrapper data={SampleCustomerContacts} />
+        </div>
+
+        <p className="landing-home-text">Feel free to modify this table!</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p className="landing-home-subtitle">
+          You also have a template email written.
+        </p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div className="landing-demo-center">
           <textarea
             rows="25"
             cols="60"
             className="landing-demo-editor"
             ref={firstEditor}
-          ></textarea>
+          />
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p className="landing-home-subtitle">
+          These two files both go into MailChimp or some other services.
           <br />
+          This is what most businesses do.
+        </p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p className="landing-home-subtitle">
+          But what if you can maximize your customer&apos;s data
           <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <p className="landing-home-subtitle">
-            These two files both go into MailChimp or some other services.
-            <br />
-            This is what most businesses do.
-          </p>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <p className="landing-home-subtitle">
-            But what if you can maximize your customer&apos;s data
-            <br />
-            and write the best email possible?
-          </p>
-          <br />
-          <br />
-          <br />
+          and write the best email possible?
+        </p>
+        <br />
+        <br />
+        <br />
+        <div className="landing-demo-center">
           <img src={thinkingEmoji} width="70" />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <p className="landing-home-subtitle">Pick one of these options:</p>
-          <div className="landing-demo-smart-option-area">
-            <div className="landing-demo-smart-option">
-              <Button
-                size="large"
-                onClick={() => handleDemoOptionClick("opener")}
-              >
-                Clever Opener
-              </Button>
-            </div>
-            <div className="landing-demo-smart-option">
-              <Button
-                size="large"
-                onClick={() => handleDemoOptionClick("subject_line")}
-              >
-                Smart Subject Line
-              </Button>
-            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p className="landing-home-subtitle">Pick one of these options:</p>
+        <div className="landing-demo-center">
+          <div className="landing-demo-smart-option">
+            <Button
+              size="large"
+              onClick={() => handleDemoOptionClick("opener")}
+            >
+              Clever Opener
+            </Button>
           </div>
-          <br />
+          <div className="landing-demo-smart-option">
+            <Button
+              size="large"
+              onClick={() => handleDemoOptionClick("subject_line")}
+            >
+              Smart Subject Line
+            </Button>
+          </div>
+        </div>
+        <br />
+        <div className="landing-demo-center">
           <textarea
             rows="25"
             cols="60"
@@ -168,8 +176,10 @@ const Demo = () => {
             ref={secondEditor}
             placeholder="Pick an option from above to see smart Merge Tags added to the base email."
           />
-          <br />
-          <br />
+        </div>
+        <br />
+        <br />
+        <div className="landing-demo-center">
           <Button
             size="large"
             appearance="primary"
@@ -179,11 +189,12 @@ const Demo = () => {
           >
             Generate AI Content!
           </Button>
-          <br />
-          <br />
-          <br />
-          <br />
         </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     </div>
   );
