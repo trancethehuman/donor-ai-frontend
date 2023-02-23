@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SpreadsheetViewer from "./SpreadsheetViewer";
 import "./MergeFields.css";
 import { useSpreadsheetData } from "./spreadsheetHooks";
 import LeftSidebar from "./LeftSidebar";
