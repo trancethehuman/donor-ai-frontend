@@ -17,6 +17,7 @@ import {
 } from "../../mergeTagUtils";
 import { AllTagReferences, sampleDataChosenColumnHeaders } from "../../consts";
 import DataGridWrapper from "../../DataGridWrapper";
+import mailchimpDiagram from "../../images/mailchimp-diagram.png";
 
 const Demo = () => {
   const [spreadsheetData, setSpreadsheetData] = useState();
@@ -120,13 +121,21 @@ const Demo = () => {
         <br />
         <br />
         <p className="landing-home-subtitle">
-          These two files both go into MailChimp or some other services.
+          These files both go into MailChimp or other email services.
+          <br />
           <br />
           This is what most businesses do.
         </p>
         <br />
         <br />
         <br />
+        <div className="landing-demo-center">
+          <img
+            className="landing-demo-ms-icon"
+            src={mailchimpDiagram}
+            width="280"
+          />
+        </div>
         <br />
         <br />
         <br />
@@ -190,6 +199,17 @@ const Demo = () => {
           >
             Generate AI Content!
           </Button>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div className="landing-demo-center">
+          <p>Sample email cards</p>
         </div>
         <br />
         <br />
