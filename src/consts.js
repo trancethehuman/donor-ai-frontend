@@ -1,8 +1,8 @@
 export const Endpoints = {
   CLASS: import.meta.env.VITE_CLASS_ENDPOINT,
   INDIVIDUAL_DONOR: import.meta.env.VITE_INDIVIDUAL_DONOR_ENDPOINT,
-  BODY_LOCATION_OPENER: import.meta.env.VITE_BODY_LOCATION_OPENER,
-  LAST_PURCHASE_SUBJECT_LINE: import.meta.env.LAST_PURCHASE_SUBJECT_LINE,
+  body_location_opener: import.meta.env.VITE_BODY_LOCATION_OPENER,
+  subject_last_purchase: import.meta.env.SUBJECT_LINE_LAST_PURCHASE,
 };
 
 // TODO: Build a database of merge tags instead of hardcoding them like this
@@ -12,7 +12,7 @@ export const AllTagReferences = {
     column_headers: { locations: [] },
   },
   subject_last_purchase: {
-    name: "LAST_PURCHASE_SUBJECT_LINE",
+    name: "SUBJECT_LINE_LAST_PURCHASE",
     column_headers: {
       purchase_names: null,
       date: null,
@@ -160,32 +160,32 @@ export const SampleCustomerContacts = [
   {
     name: "Emily Davis",
     city: "Philadelphia, PA",
-    last_product: "Gold Skinny Minimalist Ring",
-    total_spending: 3000.0,
+    last_purchase: "Gold Skinny Minimalist Ring",
+    total_spent: 3000.0,
   },
   {
     name: "David Garcia",
     city: "San Antonio, TX",
-    last_product: "Peru Wood Bracelet",
-    total_spending: 3500.0,
+    last_purchase: "Peru Wood Bracelet",
+    total_spent: 3500.0,
   },
   {
     name: "Rachel Martinez",
     city: "San Diego, CA",
-    last_product: "Pearl Ring Solid Silver",
-    total_spending: 4000.0,
+    last_purchase: "Pearl Ring Solid Silver",
+    total_spent: 4000.0,
   },
   {
     name: "William Lee",
     city: "Seattle, WA",
-    last_product: "Gold Skinny Minimalist Ring",
-    total_spending: 4500.0,
+    last_purchase: "Gold Skinny Minimalist Ring",
+    total_spent: 4500.0,
   },
   {
     name: "Karen Kim",
     city: "Miami, FL",
-    last_product: "Peru Wood Bracelet",
-    total_spending: 5000.0,
+    last_purchase: "Peru Wood Bracelet",
+    total_spent: 5000.0,
   },
 ];
 
@@ -231,7 +231,7 @@ export const sampleDataChosenColumnHeaders = [
   {
     name: AllTagReferences.subject_last_purchase.name,
     column_headers: {
-      purchase_names: ["last_product"],
+      purchase_names: ["last_purchase"],
       date: null,
       purchase_purpose: null,
     },

@@ -1,4 +1,3 @@
-import { Endpoints } from "./consts";
 import { removeBeginningDotFromString } from "./utils";
 
 /**
@@ -98,13 +97,76 @@ export const getTagKeysAndChosenColumnHeaders = (
   return result;
 };
 
-export const fetchAiContent = async () => {
-  const requestBody = {
-    city: "New York",
-  };
+/**
+ * It takes a tag, finds the tag reference, finds the endpoint, and returns the endpoint.
+ * @param tag - The tag you want to get the endpoint for.
+ * @returns The function getEndpointByTag is being returned.
+ */
+export const getEndpointByTag = (tag) => {
+  const endpoint = Endpoints[tag];
+  if (!endpoint) {
+    throw new Error(`Endpoint for tag '${tag}' not found in Endpoints`);
+  }
+  return endpoint;
+};
+
+/**
+ * It takes a reference object and a data object as arguments, and returns a new object that contains
+ * the values of the data object's keys that match the locations in the reference object's
+ * column_headers.locations array, as well as the tag property from the reference object.
+ * @param reference - {
+ * @param data - {
+ * @returns An object with the following properties:
+ *
+ * {
+ *   "tag": "tag1",
+ *   "location1": "value1",
+ *   "location2": "value2",
+ *   "location3": "value3"
+ * }</code>
+ */
+export const generateRequestBody = (reference, data) => {
+  const result = {};
+
+  // Extract the value of the "tag" property from the reference object
+  const tag = reference.tag;
+
+  // Extract the array of column headers from the reference object
+  const columnHeaders = reference.column_headers;
+
+  // Extract the array of locations from the column headers
+  const locations = columnHeaders.locations;
+
+  // Loop through the locations array to extract the corresponding values from the data object
+  for (let i = 0; i < locations.length; i++) {
+    const location = locations[i];
+
+    // Check if the location exists as a key in the data object
+    if (data.hasOwnProperty(location)) {
+      // If it does, add it to the result object with the corresponding value
+      result[location] = data[location];
+    }
+  }
+
+  // Add the tag property and its value to the result object
+  result.tag = tag;
+
+  return result;
+};
+
+/**
+ * It takes in a URL, a list of tags and columns, and a data row, and returns the result of a POST
+ * request to the URL with the data row as the body
+ * @param endpoint - the endpoint to send the request to
+ * @param tagAndColumns -
+ * @param dataRow -
+ * @returns The result of the fetch call.
+ */
+export const fetchAiContent = async (endpoint, tagAndColumns, dataRow) => {
+  const requestBody = generateRequestBody(tagAndColumns, dataRow);
 
   try {
-    const result = await fetch(Endpoints.BODY_LOCATION_OPENER, {
+    const result = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
@@ -122,7 +184,7 @@ export const fetchAiContent = async () => {
  * @param tagKeysAndColumns - [{tag: 'tag1', column: 'column1'}, {tag: 'tag2', column: 'column2'}]
  * @returns Nothing.
  */
-export const SetDataToRowsByTagsWithColumns = async (
+export const insertDataToRowsByTags = async (
   spreadsheetData,
   tagKeysAndColumns
 ) => {
@@ -133,7 +195,9 @@ export const SetDataToRowsByTagsWithColumns = async (
 
         await Promise.all(
           tagKeysAndColumns.map(async (tag) => {
-            const aiResult = await fetchAiContent();
+            console.log(tag);
+            const endpoint = getEndpointByTag(tag.tag);
+            const aiResult = await fetchAiContent(endpoint, tag, newRow);
             const result = await aiResult?.choices[0].text;
             newRow[tag.tag] = removeBeginningDotFromString(result);
           })

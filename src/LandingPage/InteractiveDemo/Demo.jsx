@@ -14,7 +14,7 @@ import { Button } from "@fluentui/react-components";
 import {
   getTagKeysFromString,
   getTagKeysAndChosenColumnHeaders,
-  SetDataToRowsByTagsWithColumns,
+  insertDataToRowsByTags,
 } from "../../mergeTagUtils";
 import { AllTagReferences, sampleDataChosenColumnHeaders } from "../../consts";
 import DataGridWrapper from "../../DataGridWrapper";
@@ -54,7 +54,7 @@ const Demo = () => {
         sampleDataChosenColumnHeaders,
         AllTagReferences
       );
-      const newData = await SetDataToRowsByTagsWithColumns(
+      const newData = await insertDataToRowsByTags(
         spreadsheetOneData,
         tagKeysAndColumns,
         setSpreadsheetTwoData

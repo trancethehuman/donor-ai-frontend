@@ -1,3 +1,5 @@
+import { Endpoints } from "./consts";
+
 /**
  * It returns a string of 9 random letters from the alphabet.
  * @returns A string of 9 random letters.
