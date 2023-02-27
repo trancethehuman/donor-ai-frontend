@@ -10,12 +10,45 @@ const DataGridWrapper = ({
   height,
   editable = false,
   getCurrentDataCallback = undefined,
+  fitAllColumnsIntoViewOnLoad = false,
 }) => {
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState();
   const [defaultColDef, setDefaultColDef] = useState();
 
   const gridRef = useRef();
+
+  const sizeToFit = useCallback(() => {
+    gridRef.current.api.sizeColumnsToFit({
+      defaultMinWidth: 100,
+    });
+  }, []);
+
+  const autoSizeAll = useCallback((skipHeader) => {
+    const allColumnIds = [];
+    gridRef.current.columnApi.getColumns().forEach((column) => {
+      allColumnIds.push(column.getId());
+    });
+    gridRef.current.columnApi.autoSizeColumns(allColumnIds, skipHeader);
+  }, []);
+
+  // When the grid view is loaded, do all these
+  const onGridReady = () => {
+    if (fitAllColumnsIntoViewOnLoad) {
+      sizeToFit();
+    }
+  };
+
+  const onCellValueChanged = useCallback(
+    (event) => {
+      const currentNodes = gridRef.current.api.forEachNode((node) => node);
+
+      if (getCurrentDataCallback) {
+        getCurrentDataCallback(currentNodes);
+      }
+    },
+    [getCurrentDataCallback]
+  );
 
   useEffect(() => {
     // These two only helps the grid display data, not keeping track of up-to-date data.
@@ -35,18 +68,7 @@ const DataGridWrapper = ({
     if (getCurrentDataCallback) {
       getCurrentDataCallback(rowData);
     }
-  }, [data, editable, getCurrentDataCallback, rowData]);
-
-  const onCellValueChanged = useCallback(
-    (event) => {
-      const currentNodes = gridRef.current.api.forEachNode((node) => node);
-
-      if (getCurrentDataCallback) {
-        getCurrentDataCallback(currentNodes);
-      }
-    },
-    [getCurrentDataCallback]
-  );
+  }, [data, editable, getCurrentDataCallback, rowData, sizeToFit]);
 
   return (
     <div>
@@ -60,6 +82,7 @@ const DataGridWrapper = ({
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           onCellValueChanged={onCellValueChanged}
+          onGridReady={onGridReady}
         />
       </div>
     </div>

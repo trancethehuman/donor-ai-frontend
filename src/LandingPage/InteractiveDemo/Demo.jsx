@@ -19,7 +19,7 @@ import {
 import { AllTagReferences, sampleDataChosenColumnHeaders } from "../../consts";
 import DataGridWrapper from "../../DataGridWrapper";
 import mailchimpDiagram from "../../images/mailchimp-diagram.png";
-import { removeBeginningDotFromString } from "../../utils";
+import { keepCertainKeysForEachObjectOfArray } from "../../utils";
 
 const Demo = () => {
   const [spreadsheetOneData, setSpreadsheetOneData] = useState();
@@ -56,10 +56,18 @@ const Demo = () => {
       );
       const newData = await SetDataToRowsByTagsWithColumns(
         spreadsheetOneData,
-        tagKeysAndColumns
+        tagKeysAndColumns,
+        setSpreadsheetTwoData
       ); //ToDo: there's a new hook called useGenerateAiContent() for this
 
-      setSpreadsheetTwoData(newData);
+      // Only keeping the name, city and AI content columns to show cleaner display results
+      const filteredDownNewData = keepCertainKeysForEachObjectOfArray(newData, [
+        ...tagKeys,
+        "name",
+        "city",
+      ]);
+
+      setSpreadsheetTwoData(filteredDownNewData);
     }
   };
 
@@ -97,6 +105,7 @@ const Demo = () => {
             editable
             getCurrentDataCallback={(data) => setSpreadsheetOneData(data)}
             height="18rem"
+            fitAllColumnsIntoViewOnLoad
           />
         </div>
         <p className="landing-home-text">Feel free to edit this table!</p>
@@ -242,6 +251,7 @@ const Demo = () => {
               data={spreadsheetTwoData}
               editable
               height="18rem"
+              fitAllColumnsIntoViewOnLoad
             />
           )}
         </div>

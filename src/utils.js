@@ -20,3 +20,22 @@ export const getRandomLettersSequence = () => {
 export const removeBeginningDotFromString = (string) => {
   return string.trim().startsWith(".") ? string.trim().slice(1) : string.trim();
 };
+
+/**
+ * It takes an array of objects and an array of keys to keep, and returns a new array of objects with
+ * only the keys specified in the array of keys to keep
+ * @param array - [{a: 1, b: 2, c: 3}, {a: 4, b: 5, c: 6}, {a: 7, b: 8, c: 9}]
+ * @param keysToKeepArray - ['id', 'name', 'age']
+ * @returns An array of objects with only the keys specified in the keysToKeepArray.
+ */
+export const keepCertainKeysForEachObjectOfArray = (array, keysToKeepArray) => {
+  return array.map(({ ...rest }) => {
+    const filteredRest = Object.keys(rest)
+      .filter((key) => keysToKeepArray.includes(key))
+      .reduce((obj, key) => {
+        obj[key] = rest[key];
+        return obj;
+      }, {});
+    return { ...filteredRest };
+  });
+};

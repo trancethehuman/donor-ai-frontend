@@ -136,7 +136,6 @@ export const SetDataToRowsByTagsWithColumns = async (
             const aiResult = await fetchAiContent();
             const result = await aiResult?.choices[0].text;
             newRow[tag.tag] = removeBeginningDotFromString(result);
-            console.log(tag);
           })
         );
         return newRow;
