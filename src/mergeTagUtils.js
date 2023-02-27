@@ -1,4 +1,5 @@
 import { removeBeginningDotFromString } from "./utils";
+import { Endpoints } from "./consts";
 
 /**
  * It takes a string and an object of available merge tags, and returns an array of valid merge tags
@@ -195,7 +196,6 @@ export const insertDataToRowsByTags = async (
 
         await Promise.all(
           tagKeysAndColumns.map(async (tag) => {
-            console.log(tag);
             const endpoint = getEndpointByTag(tag.tag);
             const aiResult = await fetchAiContent(endpoint, tag, newRow);
             const result = await aiResult?.choices[0].text;
