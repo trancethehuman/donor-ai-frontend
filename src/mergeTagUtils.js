@@ -185,7 +185,7 @@ export const fetchAiContent = async (endpoint, tagAndColumns, dataRow) => {
  * @param tagKeysAndColumns - [{tag: 'tag1', column: 'column1'}, {tag: 'tag2', column: 'column2'}]
  * @returns Nothing.
  */
-export const insertDataToRowsByTags = async (
+export const updateDataWithGeneratedContent = async (
   spreadsheetData,
   tagKeysAndColumns
 ) => {
