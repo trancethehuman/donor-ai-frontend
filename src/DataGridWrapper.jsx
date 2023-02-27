@@ -5,7 +5,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 
 const DataGridWrapper = ({
-  data,
+  data = [{ id: "", value: "" }],
   width,
   height,
   editable = false,
@@ -28,6 +28,7 @@ const DataGridWrapper = ({
 
     setDefaultColDef({
       editable: editable,
+      resizable: true,
     });
 
     // This actually exposes the grid data out (including edits)
@@ -51,7 +52,7 @@ const DataGridWrapper = ({
     <div>
       <div
         className="ag-theme-alpine"
-        style={{ height: height || "30rem", width: width || "50rem" }}
+        style={{ height: height || "32rem", width: width || "50rem" }}
       >
         <AgGridReact
           ref={gridRef}

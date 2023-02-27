@@ -1,12 +1,14 @@
 export const Endpoints = {
   CLASS: import.meta.env.VITE_CLASS_ENDPOINT,
   INDIVIDUAL_DONOR: import.meta.env.VITE_INDIVIDUAL_DONOR_ENDPOINT,
+  BODY_LOCATION_OPENER: import.meta.env.VITE_BODY_LOCATION_OPENER,
+  LAST_PURCHASE_SUBJECT_LINE: import.meta.env.LAST_PURCHASE_SUBJECT_LINE,
 };
 
 // TODO: Build a database of merge tags instead of hardcoding them like this
 export const AllTagReferences = {
   body_location_opener: {
-    name: "LOCATION_OPENER",
+    name: "BODY_LOCATION_OPENER",
     column_headers: { locations: [] },
   },
   subject_last_purchase: {
@@ -156,71 +158,31 @@ export const TestDonorList = [
 
 export const SampleCustomerContacts = [
   {
-    name: "John Doe",
-    street: "123 Main St",
-    city: "New York, NY",
-    last_product: "Pearl Ring Solid Silver",
-    total_spending: 500.0,
-  },
-  {
-    name: "Jane Smith",
-    street: "456 Elm St",
-    city: "Los Angeles, CA",
-    last_product: "Gold Skinny Minimalist Ring",
-    total_spending: 1000.0,
-  },
-  {
-    name: "Bob Johnson",
-    street: "789 Oak St",
-    city: "Chicago, IL",
-    last_product: "Peru Wood Bracelet",
-    total_spending: 1500.0,
-  },
-  {
-    name: "Samantha Lee",
-    street: "321 Maple Ave",
-    city: "Houston, TX",
-    last_product: "Gold Skinny Minimalist Ring",
-    total_spending: 2000.0,
-  },
-  {
-    name: "Mike Brown",
-    street: "654 Pine St",
-    city: "Phoenix, AZ",
-    last_product: "Pearl Ring Solid Silver",
-    total_spending: 2500.0,
-  },
-  {
     name: "Emily Davis",
-    street: "987 Cedar Blvd",
     city: "Philadelphia, PA",
     last_product: "Gold Skinny Minimalist Ring",
     total_spending: 3000.0,
   },
   {
     name: "David Garcia",
-    street: "246 Birch St",
     city: "San Antonio, TX",
     last_product: "Peru Wood Bracelet",
     total_spending: 3500.0,
   },
   {
     name: "Rachel Martinez",
-    street: "135 Walnut Dr",
     city: "San Diego, CA",
     last_product: "Pearl Ring Solid Silver",
     total_spending: 4000.0,
   },
   {
     name: "William Lee",
-    street: "753 Elm St",
     city: "Seattle, WA",
     last_product: "Gold Skinny Minimalist Ring",
     total_spending: 4500.0,
   },
   {
     name: "Karen Kim",
-    street: "159 Maple Ave",
     city: "Miami, FL",
     last_product: "Peru Wood Bracelet",
     total_spending: 5000.0,
@@ -233,7 +195,7 @@ Dear *|NAME|*,
 
 We hope this email finds you well.
 
-As a thank you for your loyalty, we are offering a special discount of 10% off your next purchase.
+Priced at just $49.99, elevate your style with the affordable "Harmony" necklace, a perfect addition to any outfit.
 
 Thank you for choosing Whimsy Wears as your go-to destination for all things jewelry.
 
@@ -245,9 +207,7 @@ Dear *|NAME|*,
 
 *|${AllTagReferences.body_location_opener.name}|*
 
-As a thank you for your loyalty, we are offering a special discount of 10% off your next purchase. 
-
-Simply use the code *|DISCOUNT_CODE|* at checkout to take advantage of this offer.
+Priced at just $49.99, elevate your style with the affordable "Harmony" necklace, a perfect addition to any outfit.
 
 Thank you for choosing Whimsy Wears as your go-to destination for all things jewelry.
 
@@ -257,9 +217,7 @@ export const SampleBaseLetterSmartSubjectLine = `Subject: *|${AllTagReferences.s
 
 Dear *|NAME|*,
 
-As a thank you for your loyalty, we are offering a special discount of 10% off your next purchase. 
-
-Simply use the code *|DISCOUNT_CODE|* at checkout to take advantage of this offer.
+Priced at just $49.99, elevate your style with the affordable "Harmony" necklace, a perfect addition to any outfit.
 
 Thank you for choosing Whimsy Wears as your go-to destination for all things jewelry.
 

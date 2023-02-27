@@ -1,3 +1,6 @@
+import { Endpoints } from "./consts";
+import { removeBeginningDotFromString } from "./utils";
+
 /**
  * It takes a string and an object of available merge tags, and returns an array of valid merge tags
  * found in the string
@@ -93,4 +96,51 @@ export const getTagKeysAndChosenColumnHeaders = (
   });
 
   return result;
+};
+
+export const fetchAiContent = async () => {
+  const requestBody = {
+    city: "New York",
+  };
+
+  try {
+    const result = await fetch(Endpoints.BODY_LOCATION_OPENER, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+    });
+
+    return await result.json();
+  } catch (e) {}
+};
+
+/**
+ * It takes a spreadsheetData array of objects and a tagKeysAndColumns array of objects and returns a
+ * new array of objects with the same data as the spreadsheetData array but with the addition of new
+ * properties and values from the tagKeysAndColumns array
+ * @param spreadsheetData - [{}, {}, {}]
+ * @param tagKeysAndColumns - [{tag: 'tag1', column: 'column1'}, {tag: 'tag2', column: 'column2'}]
+ * @returns Nothing.
+ */
+export const SetDataToRowsByTagsWithColumns = async (
+  spreadsheetData,
+  tagKeysAndColumns
+) => {
+  if (spreadsheetData) {
+    return Promise.all(
+      spreadsheetData.map(async (row) => {
+        const newRow = { ...row }; // Make a copy of the current row, otherwise the lines below directly changes the source spreadSheetData
+
+        await Promise.all(
+          tagKeysAndColumns.map(async (tag) => {
+            const aiResult = await fetchAiContent();
+            const result = await aiResult?.choices[0].text;
+            newRow[tag.tag] = removeBeginningDotFromString(result);
+            console.log(tag);
+          })
+        );
+        return newRow;
+      })
+    );
+  }
 };

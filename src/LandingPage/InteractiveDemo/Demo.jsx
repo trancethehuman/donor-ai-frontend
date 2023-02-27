@@ -14,13 +14,18 @@ import { Button } from "@fluentui/react-components";
 import {
   getTagKeysFromString,
   getTagKeysAndChosenColumnHeaders,
+  SetDataToRowsByTagsWithColumns,
 } from "../../mergeTagUtils";
 import { AllTagReferences, sampleDataChosenColumnHeaders } from "../../consts";
 import DataGridWrapper from "../../DataGridWrapper";
 import mailchimpDiagram from "../../images/mailchimp-diagram.png";
+import { removeBeginningDotFromString } from "../../utils";
 
 const Demo = () => {
-  const [spreadsheetData, setSpreadsheetData] = useState();
+  const [spreadsheetOneData, setSpreadsheetOneData] = useState();
+  const [spreadsheetTwoData, setSpreadsheetTwoData] = useState();
+  const [isOptionChosen, setIsOptionChosen] = useState(false);
+
   const firstEditor = useRef();
   const secondEditor = useRef();
 
@@ -29,9 +34,11 @@ const Demo = () => {
       switch (option) {
         case "opener":
           secondEditor.current.value = SampleBaseLetterSmartOpener;
+          setIsOptionChosen(true);
           break;
         case "subject_line":
           secondEditor.current.value = SampleBaseLetterSmartSubjectLine;
+          setIsOptionChosen(true);
           break;
         default:
           secondEditor.current.value = SampleBaseLetterSmartOpener;
@@ -39,7 +46,7 @@ const Demo = () => {
     }
   };
 
-  const handleGenerateButtonClick = (inputText) => {
+  const handleGenerateButtonClick = async (inputText) => {
     if (inputText) {
       const tagKeys = getTagKeysFromString(inputText, AllTagReferences);
       const tagKeysAndColumns = getTagKeysAndChosenColumnHeaders(
@@ -47,7 +54,12 @@ const Demo = () => {
         sampleDataChosenColumnHeaders,
         AllTagReferences
       );
-      console.log(tagKeysAndColumns);
+      const newData = await SetDataToRowsByTagsWithColumns(
+        spreadsheetOneData,
+        tagKeysAndColumns
+      ); //ToDo: there's a new hook called useGenerateAiContent() for this
+
+      setSpreadsheetTwoData(newData);
     }
   };
 
@@ -63,18 +75,16 @@ const Demo = () => {
         <br />
         <br />
         <p className="landing-home-subtitle">
-          You&apos;re an e-commerce jewelry shop
+          You&apos;re an e-commerce jewelry store
           <br />
-          called Whimsy Wears 💎
+          named Whimsy Wears 💎
         </p>
         <br />
         <br />
         <br />
         <br />
         <p className="landing-home-subtitle">
-          You have 10 customers and you want to send each
-          <br />
-          an email about a new product
+          You want to promote a new product to 5 existing customers
         </p>
         <br />
         <br />
@@ -85,10 +95,11 @@ const Demo = () => {
           <DataGridWrapper
             data={SampleCustomerContacts}
             editable
-            getCurrentDataCallback={(data) => setSpreadsheetData(data)}
+            getCurrentDataCallback={(data) => setSpreadsheetOneData(data)}
+            height="18rem"
           />
         </div>
-        <p className="landing-home-text">Feel free to modify this table!</p>
+        <p className="landing-home-text">Feel free to edit this table!</p>
         <br />
         <br />
         <br />
@@ -96,7 +107,9 @@ const Demo = () => {
         <br />
         <br />
         <p className="landing-home-subtitle">
-          You also have a template email written.
+          You also have an email written
+          <br />
+          with |* merge tags *|.
         </p>
         <br />
         <br />
@@ -122,9 +135,6 @@ const Demo = () => {
         <br />
         <p className="landing-home-subtitle">
           These files both go into MailChimp or other email services.
-          <br />
-          <br />
-          This is what most businesses do.
         </p>
         <br />
         <br />
@@ -189,17 +199,24 @@ const Demo = () => {
         </div>
         <br />
         <br />
-        <div className="landing-demo-center">
-          <Button
-            size="large"
-            appearance="primary"
-            onClick={() =>
-              handleGenerateButtonClick(secondEditor.current.value)
-            }
-          >
-            Generate AI Content!
-          </Button>
-        </div>
+        {isOptionChosen && (
+          <div>
+            <p className="landing-home-subtitle">
+              Now click this button to see the magic happen!
+            </p>
+            <div className="landing-demo-center">
+              <Button
+                size="large"
+                appearance="primary"
+                onClick={() =>
+                  handleGenerateButtonClick(secondEditor.current.value)
+                }
+              >
+                Generate AI Content!
+              </Button>
+            </div>
+          </div>
+        )}
         <br />
         <br />
         <br />
@@ -220,7 +237,13 @@ const Demo = () => {
         <br />
         <br />
         <div className="demo-page-data-grid-area landing-demo-center">
-          <DataGridWrapper data={SampleCustomerContacts} editable />
+          {spreadsheetTwoData && (
+            <DataGridWrapper
+              data={spreadsheetTwoData}
+              editable
+              height="18rem"
+            />
+          )}
         </div>
         <br />
         <br />

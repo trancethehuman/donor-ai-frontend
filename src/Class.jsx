@@ -4,7 +4,6 @@ import { Endpoints, CreativityLevels, MessageLengths } from "./consts";
 import { Button } from "@fluentui/react-components";
 import SettingInputField from "./SettingInputField";
 import SettingDropdown from "./SettingDropdown";
-import { useNavigate } from "react-router-dom";
 import LeftSidebar from "./LeftSidebar";
 import MenuNavButton from "./MenuNavButton";
 

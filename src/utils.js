@@ -11,3 +11,12 @@ export const getRandomLettersSequence = () => {
   }
   return result;
 };
+
+/**
+ * It removes the first character from a string if it's a dot. Sometimes OpenAI's API response has a dot at the beginning of the result.
+ * @param string - The string to be trimmed.
+ * @returns the string with the beginning dot removed.
+ */
+export const removeBeginningDotFromString = (string) => {
+  return string.trim().startsWith(".") ? string.trim().slice(1) : string.trim();
+};
