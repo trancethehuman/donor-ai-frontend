@@ -67,6 +67,8 @@ const Demo = () => {
         "city",
       ]);
 
+      console.log(filteredDownNewData);
+
       setSpreadsheetTwoData(filteredDownNewData);
     }
   };
