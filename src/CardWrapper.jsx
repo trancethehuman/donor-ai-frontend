@@ -5,13 +5,10 @@ import {
   Caption1,
   Text,
   tokens,
-  Subtitle1,
-  Body1,
 } from "@fluentui/react-components";
 import { Card, CardHeader } from "@fluentui/react-components/unstable";
-import * as React from "react";
-
 import { MoreHorizontal20Filled } from "@fluentui/react-icons";
+import "./CardWrapper.css";
 
 const useStyles = makeStyles({
   main: {
@@ -64,31 +61,33 @@ const CardWrapper = ({
   const styles = useStyles();
 
   return (
-    <div className={styles.main}>
-      <section className={styles.section}>
-        <Card className={styles.card}>
-          <CardHeader
-            image={
-              image && (
-                <img className={styles.headerImage} src={image} alt="image" />
-              )
-            }
-            header={<Body1>{title}</Body1>}
-            description={
-              <Caption1 className={styles.caption}>{subtitle}</Caption1>
-            }
-            action={
-              <Button
-                appearance="transparent"
-                icon={<MoreHorizontal20Filled />}
-                aria-label="More options"
-              />
-            }
-          />
+    <div className="card-wrapper">
+      <div className={styles.main}>
+        <section className={styles.section}>
+          <Card className={styles.card}>
+            <CardHeader
+              image={
+                image && (
+                  <img className={styles.headerImage} src={image} alt="image" />
+                )
+              }
+              header={<Text weight="semibold">{title}</Text>}
+              description={
+                <Caption1 className={styles.caption}>{subtitle}</Caption1>
+              }
+              // action={
+              //   <Button
+              //     appearance="transparent"
+              //     icon={<MoreHorizontal20Filled />}
+              //     aria-label="More options"
+              //   />
+              // }
+            />
 
-          <p className={styles.text}>{bodyText}</p>
-        </Card>
-      </section>
+            <p className={styles.text}>{bodyText}</p>
+          </Card>
+        </section>
+      </div>
     </div>
   );
 };

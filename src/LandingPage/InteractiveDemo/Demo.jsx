@@ -69,16 +69,6 @@ const Demo = () => {
         "city",
       ]);
 
-      const content = replaceTagNamesWithRowData(
-        secondEditor.current.value,
-        AllTagReferences,
-        newData[0],
-        "*|",
-        "|*"
-      );
-
-      secondEditor.current.value = content;
-
       setSpreadsheetTwoData(filteredDownNewData);
     }
   };
@@ -247,14 +237,18 @@ const Demo = () => {
         <br />
         <br />
         <div className="landing-demo-center">
-          {spreadsheetTwoData &&
-            spreadsheetTwoData.map((row, index) => (
-              <CardWrapper
-                key={index}
-                title={row.name}
-                bodyText={row.subject_last_purchase || row.body_location_opener}
-              />
-            ))}
+          <div className="landing-demo-email-cards-area">
+            {spreadsheetTwoData &&
+              spreadsheetTwoData.map((row, index) => (
+                <CardWrapper
+                  key={index}
+                  title={row.name}
+                  bodyText={
+                    row.subject_last_purchase || row.body_location_opener
+                  }
+                />
+              ))}
+          </div>
         </div>
         <br />
         <br />
