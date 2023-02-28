@@ -1,5 +1,9 @@
-import { removeBeginningDotFromString } from "./utils";
+import {
+  removeBeginningDotFromString,
+  replaceIdentifyingString,
+} from "./utils";
 import { Endpoints } from "./consts";
+import { AllTagReferences } from "./consts";
 
 /**
  * It takes a string and an object of available merge tags, and returns an array of valid merge tags
@@ -206,4 +210,41 @@ export const updateDataWithGeneratedContent = async (
       })
     );
   }
+};
+
+export const putStringInsideTagIdentifiers = (
+  content,
+  openingTag,
+  closingTag
+) => {
+  return `${openingTag}${content}${closingTag}`;
+};
+
+export const replaceTagNamesWithRowData = (
+  inputString,
+  tagReferences = AllTagReferences,
+  rowData,
+  openingTag,
+  closingTag
+) => {
+  let newString = "";
+
+  const tagKeys = getTagKeysFromString(inputString, tagReferences);
+
+  tagKeys.map((tagKey) => {
+    const tagName = tagReferences[tagKey].name;
+    const tagNameWithIdentifiers = putStringInsideTagIdentifiers(
+      tagName,
+      openingTag,
+      closingTag
+    );
+    const rowDataFromTag = rowData[tagKey];
+    newString = replaceIdentifyingString(
+      inputString,
+      tagNameWithIdentifiers,
+      rowDataFromTag
+    );
+  });
+
+  return newString;
 };

@@ -163,30 +163,30 @@ export const SampleCustomerContacts = [
     last_purchase: "Gold Skinny Minimalist Ring",
     total_spent: 3000.0,
   },
-  {
-    name: "David Garcia",
-    city: "San Antonio, TX",
-    last_purchase: "Peru Wood Bracelet",
-    total_spent: 3500.0,
-  },
-  {
-    name: "Rachel Martinez",
-    city: "San Diego, CA",
-    last_purchase: "Pearl Ring Solid Silver",
-    total_spent: 4000.0,
-  },
-  {
-    name: "William Lee",
-    city: "Seattle, WA",
-    last_purchase: "Gold Skinny Minimalist Ring",
-    total_spent: 4500.0,
-  },
-  {
-    name: "Karen Kim",
-    city: "Miami, FL",
-    last_purchase: "Peru Wood Bracelet",
-    total_spent: 5000.0,
-  },
+  // {
+  //   name: "David Garcia",
+  //   city: "San Antonio, TX",
+  //   last_purchase: "Peru Wood Bracelet",
+  //   total_spent: 3500.0,
+  // },
+  // {
+  //   name: "Rachel Martinez",
+  //   city: "San Diego, CA",
+  //   last_purchase: "Pearl Ring Solid Silver",
+  //   total_spent: 4000.0,
+  // },
+  // {
+  //   name: "William Lee",
+  //   city: "Seattle, WA",
+  //   last_purchase: "Gold Skinny Minimalist Ring",
+  //   total_spent: 4500.0,
+  // },
+  // {
+  //   name: "Karen Kim",
+  //   city: "Miami, FL",
+  //   last_purchase: "Peru Wood Bracelet",
+  //   total_spent: 5000.0,
+  // },
 ];
 
 export const SampleBaseLetter = `Subject: Exclusive Offer for Our Valued Customers!

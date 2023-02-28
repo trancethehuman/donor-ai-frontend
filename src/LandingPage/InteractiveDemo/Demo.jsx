@@ -15,11 +15,13 @@ import {
   getTagKeysFromString,
   getTagKeysAndChosenColumnHeaders,
   updateDataWithGeneratedContent,
+  replaceTagNamesWithRowData,
 } from "../../mergeTagUtils";
 import { AllTagReferences, sampleDataChosenColumnHeaders } from "../../consts";
 import DataGridWrapper from "../../DataGridWrapper";
 import mailchimpDiagram from "../../images/mailchimp-diagram.png";
 import { keepCertainKeysForEachObjectOfArray } from "../../utils";
+import CardWrapper from "../../CardWrapper";
 
 const Demo = () => {
   const [spreadsheetOneData, setSpreadsheetOneData] = useState();
@@ -67,7 +69,15 @@ const Demo = () => {
         "city",
       ]);
 
-      console.log(filteredDownNewData);
+      const content = replaceTagNamesWithRowData(
+        secondEditor.current.value,
+        AllTagReferences,
+        newData[0],
+        "*|",
+        "|*"
+      );
+
+      secondEditor.current.value = content;
 
       setSpreadsheetTwoData(filteredDownNewData);
     }
@@ -120,7 +130,7 @@ const Demo = () => {
         <p className="landing-home-subtitle">
           You also have an email written
           <br />
-          with |* merge tags *|.
+          with *| merge tags |*.
         </p>
         <br />
         <br />
@@ -237,7 +247,14 @@ const Demo = () => {
         <br />
         <br />
         <div className="landing-demo-center">
-          <p>Sample email cards</p>
+          {spreadsheetTwoData &&
+            spreadsheetTwoData.map((row, index) => (
+              <CardWrapper
+                key={index}
+                title={row.name}
+                bodyText={row.subject_last_purchase || row.body_location_opener}
+              />
+            ))}
         </div>
         <br />
         <br />

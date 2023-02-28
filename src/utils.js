@@ -39,3 +39,24 @@ export const keepCertainKeysForEachObjectOfArray = (array, keysToKeepArray) => {
     return { ...filteredRest };
   });
 };
+
+export const replaceIdentifyingString = (
+  longText,
+  identifyingString,
+  content
+) => {
+  let result = "";
+  let startIndex = 0;
+  let foundIndex;
+  while (
+    (foundIndex = longText.indexOf(identifyingString, startIndex)) !== -1
+  ) {
+    result += longText.substring(startIndex, foundIndex);
+    result += content;
+    startIndex = foundIndex + identifyingString.length;
+  }
+  if (startIndex < longText.length) {
+    result += longText.substring(startIndex);
+  }
+  return result;
+};
