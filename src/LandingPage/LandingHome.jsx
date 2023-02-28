@@ -25,12 +25,12 @@ const LandingHome = () => {
         </div>
 
         <br />
-        <div className="landing-home-center">
+        {/* <div className="landing-home-center">
           <YouTubeVideoFrame
             className="landing-home-video"
             videoID={"HDjmDxb3Npo"}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
