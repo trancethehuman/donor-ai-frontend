@@ -130,31 +130,18 @@ export const getEndpointByTag = (tag) => {
  *   "location3": "value3"
  * }</code>
  */
-export const generateRequestBody = (reference, data) => {
-  const result = {};
+export const generateRequestBody = (tagAndColumns, rowData) => {
+  const result = {
+    tag: tagAndColumns.tag,
+  };
 
-  // Extract the value of the "tag" property from the reference object
-  const tag = reference.tag;
+  const columnHeaders = tagAndColumns.column_headers;
 
-  // Extract the array of column headers from the reference object
-  const columnHeaders = reference.column_headers;
+  Object.keys(columnHeaders).map((header) => {
+    result[header] = rowData[columnHeaders[header]];
+  });
 
-  // Extract the array of locations from the column headers
-  const locations = columnHeaders.locations;
-
-  // Loop through the locations array to extract the corresponding values from the data object
-  for (let i = 0; i < locations.length; i++) {
-    const location = locations[i];
-
-    // Check if the location exists as a key in the data object
-    if (data.hasOwnProperty(location)) {
-      // If it does, add it to the result object with the corresponding value
-      result[location] = data[location];
-    }
-  }
-
-  // Add the tag property and its value to the result object
-  result.tag = tag;
+  console.log(result);
 
   return result;
 };
