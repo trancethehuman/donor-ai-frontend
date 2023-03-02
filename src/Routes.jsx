@@ -4,14 +4,23 @@ import LandingHome from "./LandingPage/LandingHome";
 import Demo from "./LandingPage/InteractiveDemo/Demo";
 import Class from "./Class";
 import IndividualCampaign from "./IndividualCampaign";
-import Home from "./Home";
 import MergeFields from "./MergeFields";
+import About from "./LandingPage/About";
+import Pricing from "./LandingPage/Pricing";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LandingHome />,
+  },
+  {
+    path: "/pricing",
+    element: <Pricing />,
+  },
+  {
+    path: "/About",
+    element: <About />,
   },
   {
     path: "demo",

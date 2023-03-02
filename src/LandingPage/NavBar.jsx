@@ -1,7 +1,6 @@
 import logo from "../images/EmailBlendLogo.svg";
 import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
-import About from "./About";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -22,7 +21,10 @@ const NavBar = () => {
             </a>
           </li>
           <li>
-            <a className="nav-bar-menu-item" href="#">
+            <a
+              className="nav-bar-menu-item"
+              onClick={() => navigate("/pricing")}
+            >
               Pricing
             </a>
           </li>
