@@ -161,30 +161,35 @@ export const SampleCustomerContacts = [
     name: "Emily Davis",
     city: "Philadelphia, PA",
     last_purchase: "Gold Skinny Minimalist Ring",
+    purchase_purpose: "for myself",
     total_spent: 500,
   },
   {
     name: "David Garcia",
     city: "San Antonio, TX",
     last_purchase: "Peru Wood Bracelet",
+    purchase_purpose: "for myself",
     total_spent: 60,
   },
   {
     name: "Rachel Martinez",
     city: "San Diego, CA",
     last_purchase: "Pearl Ring Solid Silver",
+    purchase_purpose: "for my fiance",
     total_spent: 2000,
   },
   {
     name: "William Lee",
     city: "Seattle, WA",
     last_purchase: "Gold Skinny Minimalist Ring",
+    purchase_purpose: "for a wedding gift",
     total_spent: 500,
   },
   {
     name: "Karen Kim",
     city: "Miami, FL",
     last_purchase: "Peru Wood Bracelet",
+    purchase_purpose: "for my daughter's birthday",
     total_spent: 10,
   },
 ];
@@ -233,7 +238,7 @@ export const sampleDataChosenColumnHeaders = [
     column_headers: {
       purchase: "last_purchase",
       purchase_date: null,
-      purchase_purpose: null,
+      purchase_purpose: "purchase_purpose",
     },
   },
 ];

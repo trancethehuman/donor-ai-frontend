@@ -22,10 +22,13 @@ import DataGridWrapper from "../../DataGridWrapper";
 import mailchimpDiagram from "../../images/mailchimp-diagram.png";
 import { keepCertainKeysForEachObjectOfArray } from "../../utils";
 import CardWrapper from "../../CardWrapper";
+import LoadingAnimation from "../../LoadingAnimation";
 
 const Demo = () => {
   const [spreadsheetOneData, setSpreadsheetOneData] = useState();
   const [spreadsheetTwoData, setSpreadsheetTwoData] = useState();
+  const [isSpreadsheetTwoDataLoading, setIsSpreadsheetTwoDataLoading] =
+    useState(false);
   const [isOptionChosen, setIsOptionChosen] = useState(false);
 
   const firstEditor = useRef();
@@ -50,6 +53,9 @@ const Demo = () => {
 
   const handleGenerateButtonClick = async (inputText) => {
     if (inputText) {
+      setIsSpreadsheetTwoDataLoading(true);
+      console.log(await isSpreadsheetTwoDataLoading);
+
       const tagKeys = getTagKeysFromString(inputText, AllTagReferences);
       const tagKeysAndColumns = getTagKeysAndChosenColumnHeaders(
         tagKeys,
@@ -70,6 +76,8 @@ const Demo = () => {
       ]);
 
       setSpreadsheetTwoData(filteredDownNewData);
+      setIsSpreadsheetTwoDataLoading(false);
+      console.log(isSpreadsheetTwoDataLoading);
     }
   };
 
@@ -237,6 +245,7 @@ const Demo = () => {
         <br />
         <br />
         <div className="landing-demo-center">
+          {isSpreadsheetTwoDataLoading && <LoadingAnimation />}
           <div className="landing-demo-email-cards-area">
             {spreadsheetTwoData &&
               spreadsheetTwoData.map((row, index) => (

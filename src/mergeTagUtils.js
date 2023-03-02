@@ -141,8 +141,6 @@ export const generateRequestBody = (tagAndColumns, rowData) => {
     result[header] = rowData[columnHeaders[header]];
   });
 
-  console.log(result);
-
   return result;
 };
 
