@@ -218,11 +218,8 @@ const Demo = () => {
         </div>
         <br />
         <br />
-        {isOptionChosen && (
+        {isOptionChosen && !isSpreadsheetTwoDataLoading && (
           <div>
-            <p className="landing-home-subtitle">
-              Now click this button to see the magic happen!
-            </p>
             <div className="landing-demo-center">
               <Button
                 size="large"
@@ -231,23 +228,23 @@ const Demo = () => {
                   handleGenerateButtonClick(secondEditor.current.value)
                 }
               >
-                Generate AI Content!
+                {!spreadsheetTwoData
+                  ? "Generate AI Content!"
+                  : "Re-generate content!"}
               </Button>
             </div>
           </div>
         )}
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <div className="landing-demo-center">
+          {isSpreadsheetTwoDataLoading && <LoadingAnimation />}
+        </div>
         <br />
         <br />
         <br />
         <div className="landing-demo-center">
-          {isSpreadsheetTwoDataLoading && <LoadingAnimation />}
           <div className="landing-demo-email-cards-area">
             {spreadsheetTwoData &&
+              !isSpreadsheetTwoDataLoading &&
               spreadsheetTwoData.map((row, index) => (
                 <CardWrapper
                   key={index}
@@ -264,11 +261,8 @@ const Demo = () => {
         <br />
         <br />
         <br />
-        <br />
-        <br />
-        <br />
         <div className="demo-page-data-grid-area landing-demo-center">
-          {spreadsheetTwoData && (
+          {spreadsheetTwoData && !isSpreadsheetTwoDataLoading && (
             <DataGridWrapper
               data={spreadsheetTwoData}
               editable
