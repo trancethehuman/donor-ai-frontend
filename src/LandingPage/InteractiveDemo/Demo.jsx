@@ -68,16 +68,15 @@ const Demo = () => {
         setSpreadsheetTwoData
       ); //ToDo: there's a new hook called useGenerateAiContent() for this
 
-      // Only keeping the name, city and AI content columns to show cleaner display results
+      // Only keeping the name and AI content columns to show cleaner display results
       const filteredDownNewData = keepCertainKeysForEachObjectOfArray(newData, [
         ...tagKeys,
         "name",
-        "city",
       ]);
 
       setSpreadsheetTwoData(filteredDownNewData);
+
       setIsSpreadsheetTwoDataLoading(false);
-      console.log(isSpreadsheetTwoDataLoading);
     }
   };
 
