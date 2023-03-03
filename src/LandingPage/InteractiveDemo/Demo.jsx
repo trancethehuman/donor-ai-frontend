@@ -57,14 +57,14 @@ const Demo = () => {
       console.log(await isSpreadsheetTwoDataLoading);
 
       const tagKeys = getTagKeysFromString(inputText, AllTagReferences);
-      const tagKeysAndColumns = getTagKeysAndChosenColumnHeaders(
+      const chosenTagKeysAndColumns = getTagKeysAndChosenColumnHeaders(
         tagKeys,
         sampleDataChosenColumnHeaders,
         AllTagReferences
       );
       const newData = await updateDataWithGeneratedContent(
         spreadsheetOneData,
-        tagKeysAndColumns,
+        chosenTagKeysAndColumns,
         setSpreadsheetTwoData
       ); //ToDo: there's a new hook called useGenerateAiContent() for this
 

@@ -3,7 +3,7 @@ import { removeBeginningDotFromString } from "./utils";
 
 export const useGenerateAiContent = (
   spreadsheetOneData,
-  tagKeysAndColumns,
+  chosenTagKeysAndColumns,
   endpoint
 ) => {
   const [result, setResult] = useState([]);
@@ -19,7 +19,7 @@ export const useGenerateAiContent = (
           const newRow = { ...row };
 
           await Promise.all(
-            tagKeysAndColumns.map(async (tag) => {
+            chosenTagKeysAndColumns.map(async (tag) => {
               const aiResult = await fetch(endpoint, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -43,7 +43,7 @@ export const useGenerateAiContent = (
       setError(error);
       setLoading(false);
     }
-  }, [endpoint, spreadsheetOneData, tagKeysAndColumns]);
+  }, [endpoint, spreadsheetOneData, chosenTagKeysAndColumns]);
 
   useEffect(() => {
     generateAiContent();

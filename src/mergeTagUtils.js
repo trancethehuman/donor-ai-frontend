@@ -167,16 +167,16 @@ export const fetchAiContent = async (endpoint, tagAndColumns, dataRow) => {
 };
 
 /**
- * It takes a spreadsheetData array of objects and a tagKeysAndColumns array of objects and returns a
+ * It takes a spreadsheetData array of objects and a chosenTagKeysAndColumns array of objects and returns a
  * new array of objects with the same data as the spreadsheetData array but with the addition of new
- * properties and values from the tagKeysAndColumns array
+ * properties and values from the chosenTagKeysAndColumns array
  * @param spreadsheetData - [{}, {}, {}]
- * @param tagKeysAndColumns - [{tag: 'tag1', column: 'column1'}, {tag: 'tag2', column: 'column2'}]
+ * @param chosenTagKeysAndColumns - [{tag: 'tag1', column: 'column1'}, {tag: 'tag2', column: 'column2'}]
  * @returns Nothing.
  */
 export const updateDataWithGeneratedContent = async (
   spreadsheetData,
-  tagKeysAndColumns
+  chosenTagKeysAndColumns
 ) => {
   if (spreadsheetData) {
     return Promise.all(
@@ -184,7 +184,7 @@ export const updateDataWithGeneratedContent = async (
         const newRow = { ...row }; // Make a copy of the current row, otherwise the lines below directly changes the source spreadSheetData
 
         await Promise.all(
-          tagKeysAndColumns.map(async (tag) => {
+          chosenTagKeysAndColumns.map(async (tag) => {
             const endpoint = getEndpointByTag(tag.tag);
             const aiResult = await fetchAiContent(endpoint, tag, newRow);
             const result = await aiResult?.choices[0].text;
